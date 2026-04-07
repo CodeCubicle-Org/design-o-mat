@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# npm / Node logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment and secrets (if you add tooling later)
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / temp
+*.swp
+*~

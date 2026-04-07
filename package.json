@@ -1,0 +1,12 @@
+{
+  "name": "design-md-tooling",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate-previews": "node generate-design-previews.mjs",
+    "generate-previews:help": "node generate-design-previews.mjs --help"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
