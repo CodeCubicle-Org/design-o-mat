@@ -1,6 +1,6 @@
 # Analysis: DESIGN.md structure, commonalities, and differences
 
-*Source corpus: flat export of [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md). Document date: 2026-04-07.*
+*Project: [design-o-mat](https://github.com/CodeCubicle-Org/design-o-mat). Source corpus: flat export of [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md). Document date: 2026-04-07.*
 
 ## What this corpus is
 

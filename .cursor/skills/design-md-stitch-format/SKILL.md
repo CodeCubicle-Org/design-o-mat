@@ -5,10 +5,10 @@ description: >-
   Agent Prompt Guide, H1 pattern, section 5 and 6 title variants, and section 7
   and 8 corpus exceptions (Cursor, Mintlify, Notion, NVIDIA). Use when matching
   awesome-design-md, Stitch format, section seven variant, DESIGN.md structure,
-  or corpus alignment.
+  or corpus alignment. Part of the design-o-mat project.
 ---
 
-# Design MD — Stitch / awesome-design-md format
+# design-o-mat — Stitch / awesome-design-md format
 
 ## Goal
 

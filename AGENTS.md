@@ -1,5 +1,7 @@
 # Agents
 
+This repository is **design-o-mat** ([GitHub](https://github.com/CodeCubicle-Org/design-o-mat)).
+
 - **Coding / build agents:** follow this file and project conventions for how to implement code.
 - **Design / UI agents:** follow **`DESIGN.md`** in this repo (or the project root where the product spec lives) for look-and-feel, tokens, and component rules.
 

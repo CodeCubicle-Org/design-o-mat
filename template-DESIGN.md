@@ -1,6 +1,6 @@
-# Authoring template: production `DESIGN.md` + execution plan
+# design-o-mat — authoring template: production `DESIGN.md` + execution plan
 
-**Version:** 1.2 · **Date:** 2026-04-07  
+**Version:** 1.2 · **Date:** 2026-04-07 · **Project:** [design-o-mat](https://github.com/CodeCubicle-Org/design-o-mat)  
 **Validated against:** flat export [`voltagent-awesome-design-md-8a5edab282632443.txt`](./voltagent-awesome-design-md-8a5edab282632443.txt) (VoltAgent [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) snapshot).
 
 This file has **two layers**:
@@ -49,7 +49,7 @@ The following is reproduced from the embedded **README** in the export (~lines 3
 
 **Contributing expectations** (from embedded `CONTRIBUTING.md`): if you change tokens, update `preview.html` / `preview-dark.html` in sync; compare against the live site when fixing hex/type.
 
-**Preview generation (Node.js only):** this repo includes [`generate-design-previews.mjs`](./generate-design-previews.mjs). After `DESIGN.md` exists, run:
+**Preview generation (Node.js only):** the **design-o-mat** repo includes [`generate-design-previews.mjs`](./generate-design-previews.mjs). After `DESIGN.md` exists, run:
 
 ```bash
 npm run generate-previews

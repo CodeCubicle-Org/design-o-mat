@@ -4,10 +4,10 @@ description: >-
   Finalizes shipping DESIGN.md: ensure Part IV-only body in the target file,
   run preview generation, optional folder README like awesome-design-md, pointer
   in README or AGENTS.md, commit message note. Use when shipping, finalize,
-  handoff, Phase 7, or publish design-md folder.
+  handoff, Phase 7, or publish design-md folder. Part of the design-o-mat project.
 ---
 
-# Design MD — ship (Phase 7)
+# design-o-mat — ship (Phase 7)
 
 ## Goal
 

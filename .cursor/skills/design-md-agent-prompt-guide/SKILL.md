@@ -4,10 +4,10 @@ description: >-
   Writes DESIGN.md section 9 Agent Prompt Guide: Quick Color Reference, Example
   Component Prompts, and Iteration Guide for LLM few-shot UI generation. Use when
   writing section nine, agent prompts, iteration guide, operational layer, or
-  Phase 4.
+  Phase 4. Part of the design-o-mat project.
 ---
 
-# Design MD — Agent Prompt Guide (Phase 4)
+# design-o-mat — Agent Prompt Guide (Phase 4)
 
 ## Goal
 

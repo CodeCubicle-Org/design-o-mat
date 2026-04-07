@@ -5,9 +5,10 @@ description: >-
   template-DESIGN.md: Key Characteristics, typography coverage, component
   states, shadow philosophy, section seven eight alignment, section nine prompts.
   Use when validating DESIGN.md, QA design spec, review checklist, or Phase 5.
+  Part of the design-o-mat project.
 ---
 
-# Design MD — validate spec (Phase 5)
+# design-o-mat — validate spec (Phase 5)
 
 ## Goal
 

@@ -4,10 +4,11 @@ description: >-
   Guides evidence capture from a live UI for DESIGN.md: screenshots, computed
   styles for key components, CSS custom properties, loaded fonts, optional
   breakpoint counts. Use when extracting tokens from a website, Phase 1, audit
-  live UI, or capture reality before normalizing colors and typography.
+  live UI, or capture reality before normalizing colors and typography. Part of
+  the design-o-mat project.
 ---
 
-# Design MD — capture tokens (Phase 1)
+# design-o-mat — capture tokens (Phase 1)
 
 ## Goal
 

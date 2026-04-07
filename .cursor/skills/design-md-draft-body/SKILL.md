@@ -5,10 +5,10 @@ description: >-
   Characteristics, Component Stylings with states, and sections 7–8 per Part II G.
   Merges polished sections 2, 3, 5, 6 from Phase 2. Use when writing DESIGN.md
   body, drafting components, theme narrative, Phase 3, or sections one four
-  seven eight.
+  seven eight. Part of the design-o-mat project.
 ---
 
-# Design MD — draft body (Phase 3)
+# design-o-mat — draft body (Phase 3)
 
 ## Goal
 

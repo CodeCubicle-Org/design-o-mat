@@ -4,10 +4,11 @@ description: >-
   Normalizes raw UI capture into consistent DESIGN.md sections: draft section 2
   Color Palette, section 3 Typography hierarchy table, section 5 Layout scales,
   section 6 Depth and Shadow Philosophy. Use when normalizing tokens, Phase 2,
-  building color tables, type ramp, spacing scale, or elevation levels.
+  building color tables, type ramp, spacing scale, or elevation levels. Part of
+  the design-o-mat project.
 ---
 
-# Design MD — normalize tokens (Phase 2)
+# design-o-mat — normalize tokens (Phase 2)
 
 ## Goal
 

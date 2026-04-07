@@ -5,10 +5,10 @@ description: >-
   inventory (U1–U16), Part II questionnaire including §7/§8 structure (Part II G),
   and canonical source when web vs design files disagree. Use when starting a
   design system spec, filling prerequisites, Phase 0, scope lock, or Part II G
-  section seven and eight choices.
+  section seven and eight choices. Part of the design-o-mat project.
 ---
 
-# Design MD — scope and source lock (Phase 0)
+# design-o-mat — scope and source lock (Phase 0)
 
 ## Goal
 

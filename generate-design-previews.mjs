@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Generate preview.html + preview-dark.html from DESIGN.md (token catalog).
+ * design-o-mat — Generate preview.html + preview-dark.html from DESIGN.md (token catalog).
  * If preview.html already exists, writes preview-v2.html / preview-dark-v2.html, etc.
  *
  * Usage:

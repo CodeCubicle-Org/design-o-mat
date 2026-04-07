@@ -1,6 +1,6 @@
-# Design-MD
+# design-o-mat
 
-Authoring toolkit for a [Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/)-style **`DESIGN.md`**: a single markdown spec for how your UI should look, plus optional HTML previews and Cursor **project skills** so you can run one phase of the workflow at a time.
+**design-o-mat** is an authoring toolkit for a [Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/)-style **`DESIGN.md`**: a single markdown spec for how your UI should look, plus optional HTML previews and Cursor **project skills** so you can run one phase of the workflow at a time.
 
 ## Contents
 
