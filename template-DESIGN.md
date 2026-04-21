@@ -49,11 +49,11 @@ The following is reproduced from the embedded **README** in the export (~lines 3
 
 **Contributing expectations** (from embedded `CONTRIBUTING.md`): if you change tokens, update `preview.html` / `preview-dark.html` in sync; compare against the live site when fixing hex/type.
 
-**Preview generation (Node.js only):** the **design-o-mat** repo includes [`generate-design-previews.mjs`](./generate-design-previews.mjs). After `DESIGN.md` exists, run:
+**Preview generation (Node.js only):** the **design-o-mat** repo includes [`scripts/generate-design-previews.mjs`](./scripts/generate-design-previews.mjs). After `DESIGN.md` exists, run:
 
 ```bash
 npm run generate-previews
-# or: node generate-design-previews.mjs ./path/to/DESIGN.md --out ./output-dir
+# or: node scripts/generate-design-previews.mjs ./path/to/DESIGN.md --out ./output-dir
 ```
 
 - First run writes `preview.html` and `preview-dark.html` next to `DESIGN.md` (or in `--out`).
@@ -299,7 +299,7 @@ Follow in order. Do not skip **verification** gates; they prevent shipping a pre
 
 | Step | Action | Output | Done |
 |------|--------|--------|------|
-| 6.1 | From the directory that contains `DESIGN.md`, run **`npm run generate-previews`** or **`node generate-design-previews.mjs ./DESIGN.md`** (add **`--out ./design-md/<slug>`** if the file lives in a subfolder) | `preview.html` + `preview-dark.html` on first run | [ ] |
+| 6.1 | From the directory that contains `DESIGN.md`, run **`npm run generate-previews`** or **`node scripts/generate-design-previews.mjs ./DESIGN.md`** (add **`--out ./design-md/<slug>`** if the file lives in a subfolder) | `preview.html` + `preview-dark.html` on first run | [ ] |
 | 6.2 | Re-run the same command after token changes; if `preview.html` already exists, the script creates **`preview-v2.html`** / **`preview-dark-v2.html`**, then `v3`, … — **never overwrites** the previous pair without a new version number | Versioned `preview-vN.html` / `preview-dark-vN.html` | [ ] |
 | 6.3 | If the generator loads **Inter** as a fallback (when no stack is detected), say so in **§1** or **§3** so agents still treat **`DESIGN.md` as canonical** for font names | Note in spec | [ ] |
 

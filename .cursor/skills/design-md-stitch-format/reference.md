@@ -45,7 +45,7 @@ Condensed from [awesome-design-md-corpus-analysis.md](../../../awesome-design-md
 
 ## Companion files (awesome-design-md layout)
 
-- `preview.html`, `preview-dark.html` — optional human QA; generate via **design-md-generate-previews** / `node generate-design-previews.mjs`
+- `preview.html`, `preview-dark.html` — optional human QA; generate via **design-md-generate-previews** / `node scripts/generate-design-previews.mjs`
 
 ## Links
 

@@ -22,7 +22,7 @@ Deliver a **clean** `DESIGN.md` for agents plus optional repo hygiene matching V
 
 1. Open [template-DESIGN.md](template-DESIGN.md) **Phase 7 — Ship** (steps 7.1–7.5).
 2. **7.1:** Ensure shipped file contains **only** production `# Design System Inspiration…` through **§9** — no Part I–III workflow prose unless user explicitly wants a combined doc.
-3. **7.2:** Run **design-md-generate-previews** (or `node generate-design-previews.mjs` with correct `--out`).
+3. **7.2:** Run **design-md-generate-previews** (or `node scripts/generate-design-previews.mjs` with correct `--out`).
 4. **7.3 (optional):** Add folder `README.md` with disclaimer, file table (`DESIGN.md`, previews), agents (Claude, Cursor, Stitch).
 5. **7.4:** Ensure root **AGENTS.md** or **README.md** states that **design agents** follow **`DESIGN.md`** for look-and-feel (coding agents follow AGENTS.md for build).
 6. **7.5:** Suggest a commit message line e.g. `docs: add DESIGN.md v1`.

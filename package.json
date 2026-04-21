@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "generate-previews": "node generate-design-previews.mjs",
-    "generate-previews:help": "node generate-design-previews.mjs --help"
+    "generate-previews": "node scripts/generate-design-previews.mjs",
+    "generate-previews:help": "node scripts/generate-design-previews.mjs --help"
   },
   "engines": {
     "node": ">=18"

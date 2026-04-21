@@ -101,7 +101,7 @@ The product intentionally treats **Cursor project skills** as the primary **exte
 | **Skill catalog governance** | [§5.0](#50-skill-catalog-and-extensibility) applies to **all** present and future `design-md-*` skills; new skills are expected as the PRD expands. |
 | **Authoring template** | `template-DESIGN.md`: Parts I–III workflow, Part IV body structure, phases 0–7, alignment notes with awesome-design-md corpus. |
 | **Reference analysis** | Documentation such as `awesome-design-md-corpus-analysis.md` explaining real-world §7/§8 patterns. |
-| **Preview generation** | `generate-design-previews.mjs` (Node 18+): parse hex tokens from `DESIGN.md`, emit `preview.html` / `preview-dark.html`, versioned `preview-vN` when files exist; embed and link **preview change history** per [§5.5](#55-preview-change-history-embedded-and-standalone); optional **PM status badges** per [§5.6](#56-skill-config-and-mcp-project-management-status-on-previews); optional **designer screenshot thumbnail strips** per [§5.7](#57-designer-screenshot-attachments-and-sample-images). |
+| **Preview generation** | `scripts/generate-design-previews.mjs` (Node 18+): parse hex tokens from `DESIGN.md`, emit `preview.html` / `preview-dark.html`, versioned `preview-vN` when files exist; embed and link **preview change history** per [§5.5](#55-preview-change-history-embedded-and-standalone); optional **PM status badges** per [§5.6](#56-skill-config-and-mcp-project-management-status-on-previews); optional **designer screenshot thumbnail strips** per [§5.7](#57-designer-screenshot-attachments-and-sample-images). |
 | **Cursor project skills** | Under `.cursor/skills/`: scope lock, capture tokens, normalize tokens, draft body, agent prompt guide, validate spec, generate previews, ship, stitch format reference; plus planned skills in [§5.4](#54-planned-cursor-skills-moodboards-change-requests-variations-combination-rules) and **sample-images** / screenshot attachment workflow in [§5.7](#57-designer-screenshot-attachments-and-sample-images). |
 | **Agent onboarding** | `AGENTS.md` and README tables describing when to use which skill and typical greenfield vs small-edit flows. |
 | **`DESIGN.md` layout** | Two-region model: **Definition area** (Stitch-aligned sections 1–9 and narrative spec) and **Action area** (commands, scripts, and procedural steps for check / validate / create / update / delete and similar operations). |
@@ -355,11 +355,11 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 
 ## 11. Technical constraints
 
-- **Runtime:** Node.js >= 18 for `generate-design-previews.mjs`.
+- **Runtime:** Node.js >= 18 for `scripts/generate-design-previews.mjs`.
 - **Module format:** ES modules (`"type": "module"` in `package.json`).
 - **Primary artifact name:** `DESIGN.md` (exact casing) for compatibility with Stitch and awesome-design-md conventions.
 - **Artifact folders (planned):** `moodboards/`, `change-requests/`, and `variations/` (exact names MAY be adjusted in implementation if documented in skills and README).
-- **Changelog artifacts (planned):** alongside catalog previews, emit standalone `preview-changelog.html` (and dark counterpart when applicable); changelog input path and schema documented next to `generate-design-previews.mjs`.
+- **Changelog artifacts (planned):** alongside catalog previews, emit standalone `preview-changelog.html` (and dark counterpart when applicable); changelog input path and schema documented next to `scripts/generate-design-previews.mjs`.
 - **PM integration config (planned):** one documented YAML (or JSON) file for MCP server ids and field mappings; optional generated snapshot `preview-pm-status.json` (gitignored or committed per team policy—document tradeoffs).
 - **Sample images tree (planned):** default `sample-images/<scope-id>/*.{png,jpg,jpeg,webp,gif}` next to `DESIGN.md` or repo root; scope ids documented alongside preview generator and optional `design-md-sample-images` skill.
 - **Skills catalog (planned):** optional `docs/skills-catalog.md` as the long-term home for the [FR-5](#8-functional-requirements) index when the skill count outgrows README tables; README retains at least a **pointer** to the full list.
