@@ -6,10 +6,12 @@
 
 | Item | Purpose |
 |------|---------|
+| [`design-definition-form.md`](docs/design-definition-form.md) | **Step 1** shared intake for designers + developers (colors, Title 1 type, layout, components, sign-off) before `template-DESIGN.md` |
+| [`design-language.md`](docs/design-language.md) | Optional designer-voice companion to the intake form (north star, color story, type voice); fill after or alongside Step 1 |
 | [`template-DESIGN.md`](template-DESIGN.md) | Full authoring guide (checklist, questionnaire, phases 0–7, Part IV body template) |
 | [`awesome-design-md-corpus-analysis.md`](awesome-design-md-corpus-analysis.md) | How VoltAgent [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) `DESIGN.md` files are structured |
 | [`scripts/generate-design-previews.mjs`](scripts/generate-design-previews.mjs) | Node script: builds `preview.html` + `preview-dark.html` from hex tokens in `DESIGN.md` (versioned `preview-vN` if files exist) |
-| [`package.json`](package.json) | `npm run generate-previews` |
+| [`package.json`](package.json) | `npm run generate-previews`; **all** repo scripts are **Node.js v24+** (no Python stack) |
 | [`AGENTS.md`](AGENTS.md) | Pointers for coding vs design agents |
 | [`.cursor/skills/`](.cursor/skills/) | Cursor **project skills** (`design-md-*`) |
 
@@ -27,13 +29,14 @@ These skills live under **`.cursor/skills/`**. Cursor loads **project skills** w
 | `design-md-draft-body` | Write **§1–§8** (theme, components, chosen §7/§8 bodies, **Key Characteristics**). **Phase 3.** |
 | `design-md-agent-prompt-guide` | Fill **§9** — Quick Color Reference, Example Component Prompts, Iteration Guide. **Phase 4.** |
 | `design-md-validate-spec` | **QA** an existing `DESIGN.md` against the Phase 5 checklist. |
-| `design-md-generate-previews` | Run **`node scripts/generate-design-previews.mjs`** (or `npm run generate-previews`) for light/dark HTML catalogs. **Phase 6.** Requires **Node 18+**. |
+| `design-md-generate-previews` | Run **`node scripts/generate-design-previews.mjs`** (or `npm run generate-previews`) for light/dark HTML catalogs. **Phase 6.** Requires **Node.js v24+**. |
 | `design-md-ship` | Strip authoring noise, optional folder `README`, previews, `AGENTS.md` / root README pointer, commit note. **Phase 7.** |
 | `design-md-stitch-format` | Check structure vs Stitch + awesome-design-md (**§7/§8** exceptions). See also [`reference.md`](.cursor/skills/design-md-stitch-format/reference.md). |
 
 ### Typical flows
 
 **Greenfield (in order)**  
+0. Fill [`design-definition-form.md`](docs/design-definition-form.md) (design + engineering); duplicate into your project if needed.  
 1. `design-md-scope-lock`  
 2. `design-md-capture-tokens` (if you have a live URL)  
 3. `design-md-normalize-tokens`  

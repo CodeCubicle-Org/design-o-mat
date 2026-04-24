@@ -58,7 +58,7 @@ npm run generate-previews
 
 - First run writes `preview.html` and `preview-dark.html` next to `DESIGN.md` (or in `--out`).
 - If `preview.html` already exists, the script writes **`preview-v2.html`** / **`preview-dark-v2.html`**, then `v3`, and so on (paired suffixes).
-- Requires **Node 18+**. No Python.
+- Requires **Node.js v24 or newer**. No Python.
 
 ---
 

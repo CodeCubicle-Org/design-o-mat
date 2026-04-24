@@ -4,9 +4,13 @@
   "type": "module",
   "scripts": {
     "generate-previews": "node scripts/generate-design-previews.mjs",
-    "generate-previews:help": "node scripts/generate-design-previews.mjs --help"
+    "generate-previews:help": "node scripts/generate-design-previews.mjs --help",
+    "extract-inspiration": "node scripts/extract-inspiration-from-image.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.34.1"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=24"
   }
 }

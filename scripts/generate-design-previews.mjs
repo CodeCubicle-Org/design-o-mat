@@ -11,6 +11,18 @@
 import fs from "node:fs";
 import path from "node:path";
 
+const MIN_NODE_MAJOR = 24;
+
+function assertNodeVersion() {
+  const major = Number.parseInt(process.versions.node.split(".")[0], 10);
+  if (!Number.isFinite(major) || major < MIN_NODE_MAJOR) {
+    console.error(
+      `This script requires Node.js v${MIN_NODE_MAJOR} or newer (JavaScript runtime). Current: ${process.version}`
+    );
+    process.exit(1);
+  }
+}
+
 function parseArgs(argv) {
   const out = { designPath: null, outDir: null, help: false };
   for (let i = 2; i < argv.length; i++) {
@@ -26,6 +38,8 @@ function parseArgs(argv) {
 
 function printHelp() {
   console.log(`scripts/generate-design-previews.mjs — build preview HTML from DESIGN.md
+
+Requires Node.js v${MIN_NODE_MAJOR}+.
 
 Usage:
   node scripts/generate-design-previews.mjs [path/to/DESIGN.md] [--out <directory>]
@@ -302,6 +316,7 @@ function escapeHtml(s) {
 }
 
 function main() {
+  assertNodeVersion();
   const args = parseArgs(process.argv);
   if (args.help) {
     printHelp();

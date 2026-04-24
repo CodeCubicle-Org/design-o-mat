@@ -4,16 +4,16 @@
 |-------|-------|
 | **Product** | design-o-mat |
 | **Repository** | [CodeCubicle-Org/design-o-mat](https://github.com/CodeCubicle-Org/design-o-mat) |
-| **Document version** | 1.7 |
+| **Document version** | 1.11 |
 | **Created** | 2026-04-17 |
-| **Last modified** | 2026-04-17 |
+| **Last modified** | 2026-04-24 |
 | **Status** | Draft — living document |
 
 ---
 
 ## 1. Executive summary
 
-**design-o-mat** is an authoring toolkit for producing a single-file UI specification in the [Google Stitch `DESIGN.md`](https://stitch.withgoogle.com/docs/design-md/overview/) style, extended with patterns from [VoltAgent awesome-design-md](https://github.com/VoltAgent/awesome-design-md). The product bundles a phased authoring template, optional HTML light/dark previews generated from documented tokens, and Cursor **project skills** so humans and agents can execute one workflow phase at a time with consistent quality.
+**design-o-mat** is an authoring toolkit for producing a single-file UI specification in the [Google Stitch `DESIGN.md`](https://stitch.withgoogle.com/docs/design-md/overview/) style, extended with patterns from [VoltAgent awesome-design-md](https://github.com/VoltAgent/awesome-design-md). The product bundles a phased authoring template, optional HTML light/dark previews generated from documented tokens, and Cursor **project skills** so humans and agents can execute one workflow phase at a time with consistent quality. **Step 1 (shared intake)** is the markdown form **`docs/design-definition-form.md`**: designers and developers fill predefined fields (product identity, **primary and accent color**, typography including **Title 1** font and size, layout tokens, component checklist, §7/§8 intent, engineering constraints) **before** deep work in `template-DESIGN.md`. The same **spec, template, runbooks, and scripts** are intended to stay **usable across coding assistants and model vendors** (for example **GitHub Copilot**, **Claude Code**, **Cursor**, **Google Gemini**–based tools, **OpenAI Codex**, **Mistral Codestral**, and comparable products); Cursor skills are the **first-party** automation layer in this repository, not the only environment where the workflow applies.
 
 This PRD defines what the project is for, who it serves, what is in scope, and how success is measured so contributors and consumers can align on expectations beyond the README alone.
 
@@ -35,7 +35,7 @@ Planned work is organized under **§5** (**§5.0** governance, **§5.4–§5.7**
 
 ### 2.1 Vision
 
-Make it practical for any team to maintain a **portable, agent-readable design spec** (`DESIGN.md`) that stays aligned with Stitch semantics, corpus reality (including known §7/§8 variants), and optional visual previews—without requiring a proprietary design tool.
+Make it practical for any team to maintain a **portable, agent-readable design spec** (`DESIGN.md`) that stays aligned with Stitch semantics, corpus reality (including known §7/§8 variants), and optional visual previews—without requiring a proprietary design tool—while remaining **actionable** whether the team’s coding assistant is **Copilot, Claude Code, Cursor, Gemini-based tooling, Codex, Codestral**, or another LLM-backed editor integration.
 
 ### 2.2 Primary goals
 
@@ -49,6 +49,8 @@ Make it practical for any team to maintain a **portable, agent-readable design s
 8. **Design ↔ delivery alignment** — Optional **MCP-backed** links from `DESIGN.md` components to PM issues (Jira, etc.) surface **issue status as of preview generation** (**snapshot** in static HTML) next to the spec; **live** in-browser refresh remains out of scope until explicitly shipped ([§5.3](#53-future-considerations-backlog-signals-not-committed)).
 9. **Evidence next to spec** — Designer **screenshots** attach to the right **section / component / element** and appear as a compact **thumbnail strip** on previews, refreshed from the **`sample-images`** folder whenever previews regenerate.
 10. **Extensible skills surface** — New capabilities ship as **additional project skills** under documented conventions ([§5.0](#50-skill-catalog-and-extensibility)); the README (or **skills catalog** doc) and this PRD stay aligned so humans and agents always know what exists and when to use it.
+11. **Multi-assistant authoring** — Core artifacts (`DESIGN.md`, `template-DESIGN.md`, `AGENTS.md`, preview pipeline, Action-area runbooks) SHOULD **not** assume a single vendor; documentation SHOULD make phase intent clear enough to follow with **GitHub Copilot**, **Claude Code**, **Cursor**, **Gemini**-class assistants, **OpenAI Codex**, **Mistral Codestral**, and similar tools ([FR-26](#8-functional-requirements)).
+12. **Designer–developer intake** — A single **Step 1** form (`docs/design-definition-form.md`) captures agreed tokens and type basics so both roles start from the same facts before Parts I–III and `DESIGN.md` drafting ([FR-27](#8-functional-requirements), [§7.0](#70-shared-intake-designdefinitionformmd)).
 
 ### 2.3 Non-goals
 
@@ -60,7 +62,7 @@ Make it practical for any team to maintain a **portable, agent-readable design s
 
 ## 3. Problem statement
 
-Teams want LLM-assisted UI work to be **repeatable** and **on-brand**, but ad-hoc prompts and scattered style notes produce inconsistent components, wrong contrast, and missing states. A Stitch-aligned `DESIGN.md` addresses that, yet authors need **guidance**, **checklists**, and **optional automation** (previews) so the spec stays complete, validated, and shippable. design-o-mat packages that workflow into copyable artifacts and agent skills.
+Teams want LLM-assisted UI work to be **repeatable** and **on-brand**, but ad-hoc prompts and scattered style notes produce inconsistent components, wrong contrast, and missing states. **Design and engineering** often diverge before a spec exists: a **shared intake form** (`docs/design-definition-form.md`) establishes a common baseline (colors, Title 1 / body type, layout, component scope) **first**. A Stitch-aligned `DESIGN.md` addresses the full system, yet authors need **guidance**, **checklists**, and **optional automation** (previews) so the spec stays complete, validated, and shippable. design-o-mat packages that workflow into copyable artifacts and agent skills.
 
 ---
 
@@ -68,13 +70,13 @@ Teams want LLM-assisted UI work to be **repeatable** and **on-brand**, but ad-ho
 
 | Persona | Needs |
 |---------|--------|
-| **Design system author** | Structured questionnaire, inventory (U1–U16), clear phases, validation checklist. |
-| **Frontend engineer** | Token tables, component states, layout and elevation rules; optional HTML previews for quick visual QA. |
-| **Coding agent (Cursor / other)** | `AGENTS.md` pointer to `DESIGN.md`; skills for scoped tasks (normalize tokens, validate, generate previews). |
+| **Design system author** | **`docs/design-definition-form.md` (Step 1)** with design-led fields; then structured questionnaire, inventory (U1–U16), clear phases, validation checklist. |
+| **Frontend engineer** | Same **Step 1** form for stack and token constraints; token tables, component states, layout and elevation rules in `DESIGN.md`; optional HTML previews for quick visual QA. |
+| **Coding agent (any LLM-backed assistant)** | `AGENTS.md` pointer to `DESIGN.md`; phased workflow and Action-area commands; in Cursor, **project skills** for scoped tasks (normalize tokens, validate, generate previews). Same spec and runbooks apply when using **Copilot**, **Claude Code**, **Gemini**-based tools, **Codex**, **Codestral**, etc., with tool-native invocation left to the author or future packaged exports ([§5.1](#51-in-scope), [FR-26](#8-functional-requirements)). |
 | **Design / UI agent** | Single source of truth for look-and-feel; section 9 prompts for iteration. |
 | **Maintainer of another repo** | Ability to copy `.cursor/skills/design-md-*`, `template-DESIGN.md`, and the preview script into another project; **predictable skill names** and a **single catalog** of skills (see [§5.0](#50-skill-catalog-and-extensibility)) reduce fork drift. |
 | **Customer / stakeholder** | Change requests captured and traceable; visible outcomes in previews without editing `DESIGN.md` by hand. |
-| **Visual designer** | Moodboards and multi-variation previews for exploration; pairing rules visible so unsafe combinations are avoided early; drop screenshots into **`sample-images`** and see them under the right component on the next preview run. |
+| **Visual designer** | Co-own **`docs/design-definition-form.md`** (colors, type, mood); moodboards and multi-variation previews for exploration; pairing rules visible so unsafe combinations are avoided early; drop screenshots into **`sample-images`** and see them under the right component on the next preview run. |
 | **Design ops / PM** | Jira (or similar) **status** on preview pages next to components (**snapshot** at preview generation); config-driven MCP without hard-coding vendor logic in `DESIGN.md` prose. |
 
 ---
@@ -83,7 +85,7 @@ Teams want LLM-assisted UI work to be **repeatable** and **on-brand**, but ad-ho
 
 ### 5.0 Skill catalog and extensibility
 
-The product intentionally treats **Cursor project skills** as the primary **extensible control plane**: each new PRD feature (or sub-workflow) MAY ship as its own skill folder rather than overloading a single mega-skill. The repository MUST stay navigable as the count grows.
+The product intentionally treats **Cursor project skills** as the primary **extensible control plane** for **Cursor**: each new PRD feature (or sub-workflow) MAY ship as its own skill folder rather than overloading a single mega-skill. The repository MUST stay navigable as the count grows. **Skill instructions** SHOULD remain readable as **plain procedural markdown** so other assistants can reuse the same steps where the host has no skill equivalent ([FR-26](#8-functional-requirements)).
 
 | Topic | Requirement |
 |-------|-------------|
@@ -99,18 +101,20 @@ The product intentionally treats **Cursor project skills** as the primary **exte
 | Area | Specification |
 |------|----------------|
 | **Skill catalog governance** | [§5.0](#50-skill-catalog-and-extensibility) applies to **all** present and future `design-md-*` skills; new skills are expected as the PRD expands. |
+| **Design definition form** | **`docs/design-definition-form.md`** in the **`docs/`** folder: shared **Step 1** markdown form for designers and developers (ownership, color roles including primary/accent, **Title 1** and body typography, layout/radius/shadow, component checklist, §7/§8 intent, engineering constraints, sign-off). Teams copy it into their project and fill before or alongside Part I–II ([FR-27](#8-functional-requirements), [§7.0](#70-shared-intake-designdefinitionformmd)). |
 | **Authoring template** | `template-DESIGN.md`: Parts I–III workflow, Part IV body structure, phases 0–7, alignment notes with awesome-design-md corpus. |
 | **Reference analysis** | Documentation such as `awesome-design-md-corpus-analysis.md` explaining real-world §7/§8 patterns. |
-| **Preview generation** | `scripts/generate-design-previews.mjs` (Node 18+): parse hex tokens from `DESIGN.md`, emit `preview.html` / `preview-dark.html`, versioned `preview-vN` when files exist; embed and link **preview change history** per [§5.5](#55-preview-change-history-embedded-and-standalone); optional **PM status badges** per [§5.6](#56-skill-config-and-mcp-project-management-status-on-previews); optional **designer screenshot thumbnail strips** per [§5.7](#57-designer-screenshot-attachments-and-sample-images). |
+| **Preview generation** | `scripts/generate-design-previews.mjs` (**Node.js v24+**): parse hex tokens from `DESIGN.md`, emit `preview.html` / `preview-dark.html`, versioned `preview-vN` when files exist; embed and link **preview change history** per [§5.5](#55-preview-change-history-embedded-and-standalone); optional **PM status badges** per [§5.6](#56-skill-config-and-mcp-project-management-status-on-previews); optional **designer screenshot thumbnail strips** per [§5.7](#57-designer-screenshot-attachments-and-sample-images). |
 | **Cursor project skills** | Under `.cursor/skills/`: scope lock, capture tokens, normalize tokens, draft body, agent prompt guide, validate spec, generate previews, ship, stitch format reference; plus planned skills in [§5.4](#54-planned-cursor-skills-moodboards-change-requests-variations-combination-rules) and **sample-images** / screenshot attachment workflow in [§5.7](#57-designer-screenshot-attachments-and-sample-images). |
 | **Agent onboarding** | `AGENTS.md` and README tables describing when to use which skill and typical greenfield vs small-edit flows. |
 | **`DESIGN.md` layout** | Two-region model: **Definition area** (Stitch-aligned sections 1–9 and narrative spec) and **Action area** (commands, scripts, and procedural steps for check / validate / create / update / delete and similar operations). |
 | **Licensing** | MIT per `LICENSE`. |
+| **Multi-assistant / multi-LLM usability** | Shipped **Definition** and **Action** content, `template-DESIGN.md`, `AGENTS.md`, README guidance, and **Node preview scripts** MUST be **usable** when the author’s coding environment is not Cursor—e.g. **GitHub Copilot**, **Claude Code**, **Google Gemini**–backed assistants, **OpenAI Codex**, **Mistral Codestral**, or other comparable tools. **Cursor** `.cursor/skills/` remain the **canonical** packaged automation for Cursor; cross-tool parity is met by **portable markdown and scripts** plus documented phase mapping ([FR-26](#8-functional-requirements)), not by mandating identical native integrations in every host ([§5.2](#52-out-of-scope-current-product-boundary)). |
 
 ### 5.2 Out of scope (current product boundary)
 
 - Hosted SaaS or account-based services.
-- IDE plugins beyond Cursor skill markdown in this repository.
+- Shipping **native IDE or host extensions** for every coding assistant (Copilot, Claude Code, Gemini, Codex, Codestral, etc.); first-party repo integration remains **Cursor skill markdown** under `.cursor/skills/`. **Multi-assistant usability** of the **spec and runbooks** is [in scope](#51-in-scope) ([FR-26](#8-functional-requirements)).
 - Automatic scraping or CI that runs against arbitrary URLs without user invocation (skills may guide manual capture).
 
 ### 5.3 Future considerations (backlog signals, not committed)
@@ -122,6 +126,7 @@ The product intentionally treats **Cursor project skills** as the primary **exte
 - Live in-browser refresh of Jira status without regenerating HTML (polling or OAuth in static pages).
 - Full-screen **lightbox** or zoom for attachment images beyond the three-thumbnail strip.
 - **Auto-generated** skill index (e.g. script that lists `.cursor/skills/` + `description` excerpts) to reduce manual README drift.
+- **Optional packaged exports** of phase workflows into host-specific formats (e.g. Copilot instructions, Claude Code slash-doc bundles, rules files) if demand consolidates—without duplicating the semantic source of truth outside `DESIGN.md` / template.
 
 ### 5.4 Planned Cursor skills: moodboards, change requests, variations, combination rules
 
@@ -229,7 +234,7 @@ The **design-o-mat** `DESIGN.md` (and authoring guidance we publish for teams th
 | Aspect | Requirement |
 |--------|-------------|
 | **Purpose** | Collect **commands, code, and shell scripts** (and step-by-step invocations) that **do** something against the repo or artifacts: e.g. **check**, **validate**, **create**, **update**, **delete**, and other maintenance or CI-friendly actions tied to the spec. |
-| **Audience** | Humans, coding agents, and automation; each entry SHOULD state working directory, prerequisites (e.g. Node 18+), and whether the operation is read-only or mutates files. |
+| **Audience** | Humans, coding agents, and automation; each entry SHOULD state working directory, prerequisites (e.g. **Node.js v24+**), and whether the operation is read-only or mutates files. |
 | **Content type** | Runnable shell lines, `npm` / `node` invocations, small scripts, validation checklists with explicit pass/fail criteria, and “how to regenerate previews” style runbooks. Destructive operations (**delete**, reset, clean) MUST be labeled as such and MUST NOT be implied by ambiguous prose. |
 | **Boundaries** | The Action area MUST be visually and structurally distinct from the Definition area (e.g. a dedicated top-level section such as “Actions / Runbook”, or an appendix) so parsers and agents do not treat a command line as a design token or vice versa. |
 
@@ -243,16 +248,25 @@ The **design-o-mat** `DESIGN.md` (and authoring guidance we publish for teams th
 
 ## 7. User journeys
 
+### 7.0 Shared intake: `docs/design-definition-form.md`
+
+1. **Duplicate** `docs/design-definition-form.md` into the target project next to (or above) where `DESIGN.md` will live.
+2. **Designer** fills visual fields: product name, color roles (primary background/text, brand/CTA, accent, semantic, focus), **Title 1** (font, size, weight, line-height, letter-spacing), extended type scale as needed, layout/radius/shadow, component checklist, motion and breakpoint intent, §7/§8 choices.
+3. **Developer** fills engineering fields: stack, existing tokens, technical limits; reviews color/type for feasibility.
+4. **Sign-off** when minimum bar is met ([FR-27](#8-functional-requirements)); open questions listed in the form are either resolved or explicitly carried into Part II.
+5. Proceed to **§7.1** — use the completed form as **input** to Part I inventory and Part II questionnaire (avoid contradicting signed-off tokens without updating the form or recording a CR).
+
 ### 7.1 Greenfield spec (happy path)
 
-1. Run **scope lock** skill → fill Part I inventory and Part II questionnaire; choose §7/§8 structure per product needs.
-2. If a live URL exists → **capture tokens** (evidence: screenshots, computed styles, CSS variables, fonts, breakpoints).
-3. **Normalize tokens** → draft §2, §3, §5, §6 with consistent semantics.
-4. **Draft body** → §1–§8 including Key Characteristics and component states.
-5. **Agent prompt guide** → complete §9.
-6. **Validate spec** → Phase 5 checklist.
-7. **Generate previews** → `npm run generate-previews` (includes **embedded** collapsed history + **standalone** changelog pages per [§5.5](#55-preview-change-history-embedded-and-standalone)).
-8. **Ship** → Part IV-only `DESIGN.md`, optional folder README, pointers in README / `AGENTS.md`.
+1. Complete **`docs/design-definition-form.md`** (Step 1) per [§7.0](#70-shared-intake-designdefinitionformmd).
+2. Run **scope lock** skill → fill Part I inventory and Part II questionnaire; choose §7/§8 structure per product needs (should align with the form’s §7/§8 intent unless scope changed).
+3. If a live URL exists → **capture tokens** (evidence: screenshots, computed styles, CSS variables, fonts, breakpoints).
+4. **Normalize tokens** → draft §2, §3, §5, §6 with consistent semantics.
+5. **Draft body** → §1–§8 including Key Characteristics and component states.
+6. **Agent prompt guide** → complete §9.
+7. **Validate spec** → Phase 5 checklist.
+8. **Generate previews** → `npm run generate-previews` (includes **embedded** collapsed history + **standalone** changelog pages per [§5.5](#55-preview-change-history-embedded-and-standalone)).
+9. **Ship** → Part IV-only `DESIGN.md`, optional folder README, pointers in README / `AGENTS.md`.
 
 Authors SHOULD place procedural steps from the template/skills that are “always run the same way” into the **Action area** of `DESIGN.md` as the repo’s canonical runbook, while keeping narrative spec in the **Definition area**.
 
@@ -291,7 +305,7 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 | FR-1 | The template MUST document Stitch sections 1–9, with section 9 as the additive Agent Prompt Guide layer. | Must |
 | FR-2 | The template MUST document corpus exceptions for §7/§8 without forcing contradictory titles. | Must |
 | FR-3 | Each project skill MUST include a YAML `description` stating when the agent should apply it. | Must |
-| FR-4 | Preview script MUST run on Node 18+ and document CLI usage (`--help`, optional `--out`). | Must |
+| FR-4 | Preview script MUST run on **Node.js v24 or newer** and document CLI usage (`--help`, optional `--out`). | Must |
 | FR-5 | The repo MUST maintain an **authoritative skill index**: either a dedicated **`docs/skills-catalog.md`** (grouped by theme as the list grows) **or** an equivalent **README** section—listing **every** shipped `design-md-*` (and documented exception) skill with **one-line purpose** and **phase / when-to-use** mapping. The index MUST be **updated in the same change** whenever a skill is **added**, **renamed**, **deprecated**, or materially re-scoped ([§5.0](#50-skill-catalog-and-extensibility)). **`AGENTS.md` SHOULD link** to that index (or embed a short cheat sheet that stays in sync). | Must |
 | FR-6 | Ship guidance MUST clarify that shipped `DESIGN.md` is Part IV (or equivalent) without authoring-only noise. | Should |
 | FR-7 | Previews SHOULD remain optional; repo remains useful without generated HTML checked in. | Should |
@@ -313,6 +327,8 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 | FR-23 | The product **MUST** support attaching designer **screenshots** to **sections**, **components**, and **elements** via files under **`sample-images/`** (or documented alternate, e.g. `sample-image/`) with a **stable scope id** per [§5.7](#57-designer-screenshot-attachments-and-sample-images). Teams MAY omit folders when they have no attachments. | Must |
 | FR-24 | When attachments exist for a scope, catalog previews **MUST** render **below** that block: **≤ 3** tiny **thumbnail** previews plus the **total number** of image files in that folder ([§5.7](#57-designer-screenshot-attachments-and-sample-images)). | Must |
 | FR-25 | The **sample-images** skill or preview pipeline MUST **rescan** image folders on **every** preview generation run so attachment strips match current files on disk ([§5.7](#57-designer-screenshot-attachments-and-sample-images)). | Must |
+| FR-26 | **Multi-assistant usability:** `template-DESIGN.md`, shipped `DESIGN.md` patterns (Definition + Action), `AGENTS.md`, and README **SHOULD** describe the phased workflow in terms **portable across coding assistants** (e.g. **GitHub Copilot**, **Claude Code**, **Cursor**, **Google Gemini**–based tools, **OpenAI Codex**, **Mistral Codestral**). Prose and runbooks **MUST NOT** rely on Cursor-only concepts where a **neutral** instruction (shell, npm, file paths, checklist) suffices. Where Cursor skills are the shortest path, **AGENTS.md** or README **SHOULD** state the **equivalent human or generic-agent** steps for teams not using Cursor. | Should |
+| FR-27 | The repository **MUST** ship **`docs/design-definition-form.md`** (markdown) as the canonical **Step 1** intake: predefined sections for designer **and** developer input covering at minimum **product identity**, **primary and accent (and related) color roles**, **Title 1** typography (font family, size, weight, line-height), **body** type defaults, **layout / radius / shadow** basics, **component presence** checklist, **§7/§8 structure intent**, and **sign-off**. README **or** `AGENTS.md` **SHOULD** point authors to this file **before** or **alongside** Part I–II of `template-DESIGN.md`. The form **SHOULD** state how it maps to Stitch §1–§9 and template **U1–U16** / Part II. | Must |
 
 ---
 
@@ -323,7 +339,7 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 | NFR-1 | **Portability** — Skills and scripts usable when copied into another repo’s workspace. | README already describes copy path. |
 | NFR-2 | **Clarity** — Prefer tables and explicit phase numbers over prose-only runbooks. | Align with `template-DESIGN.md`. |
 | NFR-3 | **Maintainability** — Changes to Stitch or awesome-design-md format expectations SHOULD be reflected in `design-md-stitch-format` and template/corpus docs together. | Process expectation for maintainers. |
-| NFR-4 | **No Python dependency** for preview generation. | Stated in template and `package.json`. |
+| NFR-4 | **No Python dependency** — preview generation **and any other first-party repository scripts or automation** MUST use **Node.js v24 or newer** (JavaScript; ES modules; `engines.node` in `package.json`). Do not introduce a mandatory Python stack for tooling shipped in this repo. | Stated in template and `package.json`; see `AGENTS.md` for agent-facing wording. |
 | NFR-5 | **Discoverability** — Moodboards, change requests, and variations use **documented folder layouts** and naming so agents and humans can list history without tribal knowledge. | New skills MUST ship a short convention section in `SKILL.md` or repo `docs/`. |
 | NFR-6 | **Preview portability** — Moodboard and design-system previews SHOULD be openable as **static files** (`file://` or any static server) unless a skill explicitly documents otherwise. | Keeps designer workflow lightweight. |
 | NFR-7 | **Accessible disclosure** — Collapsible history MUST be operable with **keyboard** and MUST expose an appropriate **accessible name** (native `<details>`/`<summary>` preferred). | Avoids custom-only click targets. |
@@ -331,6 +347,7 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 | NFR-9 | **Resilience** — PM integration SHOULD respect **rate limits** and SHOULD use **caching** or batch fetch where documented so repeated preview runs do not spam Jira. | Optional backoff / TTL in config. |
 | NFR-10 | **Thumbnail weight** — Preview pages MUST NOT require downloading full-resolution originals for every attachment by default; use constrained dimensions, `srcset`, or pre-generated small assets. | Keeps `preview.html` usable on slow links. |
 | NFR-11 | **Skill catalog scalability** — With **10+** skills, a new contributor MUST still find **what exists** and **when to use it** within **two minutes** via the index in [FR-5](#8-functional-requirements); avoid duplicate or overlapping `description` triggers without a disambiguation note in the catalog. | Prefer `docs/skills-catalog.md` once README tables become unwieldy. |
+| NFR-12 | **Assistant-agnostic core** — A reader using **only** `DESIGN.md`, **`docs/design-definition-form.md`**, `template-DESIGN.md`, and README (no Cursor) MUST still understand **Step 1 intake**, **later phases**, **validation**, and **preview generation** prerequisites without opening `.cursor/skills/`; skill folders **add** Cursor-native ergonomics, they **MUST NOT** be the sole place critical requirements live ([FR-26](#8-functional-requirements), [FR-27](#8-functional-requirements)). | Keeps Copilot / Claude Code / Gemini / Codex / Codestral workflows viable. |
 
 ---
 
@@ -338,7 +355,8 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 
 | Metric | How to observe |
 |--------|----------------|
-| **Completeness** | A new author can produce a validated Part IV `DESIGN.md` using only repo artifacts and skills, without external proprietary docs. |
+| **Completeness** | A new author can produce a validated Part IV `DESIGN.md` using repo artifacts (including **`docs/design-definition-form.md`** Step 1) and skills, without external proprietary docs. |
+| **Intake alignment** | For greenfield work, **design** and **engineering** complete **`docs/design-definition-form.md`** before deep Part II authoring; Part I–II entries do not silently contradict signed-off color/type without an explicit update or change record. |
 | **Skill utility** | Each skill maps to a named phase or task in the **authoritative index** ([FR-5](#8-functional-requirements)) and template; **no orphan skills** (every `.cursor/skills/design-md-*` folder appears in the index). |
 | **Preview fidelity** | Generated HTML reflects documented hex roles; known limitation (e.g. Inter fallback) is documented in template Phase 6. |
 | **Adoption** | Third-party repos copy skills/template; issues/PRs reference phases and section numbers consistently. |
@@ -350,14 +368,16 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 | **Changelog UX** | Opening a fresh `preview.html` shows the main catalog without expanded history noise; expanding the block or opening the standalone changelog reveals the same ordered entries. |
 | **PM status parity** | For a component mapped to `PROJ-123`, the badge text on `preview.html` matches Jira’s **status** field at last successful snapshot (e.g. **Approved**). |
 | **Screenshot strip accuracy** | After adding 12 files under `sample-images/s4-button/`, the Button block shows **3** thumbnails and text reflecting **12** total; deleting 10 files and regenerating updates the strip the same day without manual HTML edits. |
+| **Cross-assistant clarity** | A developer using **GitHub Copilot**, **Claude Code**, **Gemini**-class tooling, **OpenAI Codex**, or **Mistral Codestral** (no Cursor) can follow README + `AGENTS.md` + **`docs/design-definition-form.md`** + template to complete [§7.0](#70-shared-intake-designdefinitionformmd) and the greenfield journey in [§7.1](#71-greenfield-spec-happy-path) using **generic** shell and npm steps documented in the Action area and README; any Cursor-only shortcut is duplicated or summarized in neutral prose ([FR-26](#8-functional-requirements), [NFR-12](#9-non-functional-requirements)). |
 
 ---
 
 ## 11. Technical constraints
 
-- **Runtime:** Node.js >= 18 for `scripts/generate-design-previews.mjs`.
+- **Runtime:** Node.js **>= 24** for `scripts/generate-design-previews.mjs` and other repo scripts (`package.json` `engines`).
 - **Module format:** ES modules (`"type": "module"` in `package.json`).
 - **Primary artifact name:** `DESIGN.md` (exact casing) for compatibility with Stitch and awesome-design-md conventions.
+- **Intake form:** `docs/design-definition-form.md`; teams duplicate into their workspace for **Step 1** ([FR-27](#8-functional-requirements)).
 - **Artifact folders (planned):** `moodboards/`, `change-requests/`, and `variations/` (exact names MAY be adjusted in implementation if documented in skills and README).
 - **Changelog artifacts (planned):** alongside catalog previews, emit standalone `preview-changelog.html` (and dark counterpart when applicable); changelog input path and schema documented next to `scripts/generate-design-previews.mjs`.
 - **PM integration config (planned):** one documented YAML (or JSON) file for MCP server ids and field mappings; optional generated snapshot `preview-pm-status.json` (gitignored or committed per team policy—document tradeoffs).
@@ -372,7 +392,8 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 |------------|------|
 | [Google Stitch — design-md](https://stitch.withgoogle.com/docs/design-md/overview/) | Format authority for sections 1–8. |
 | [VoltAgent awesome-design-md](https://github.com/VoltAgent/awesome-design-md) | Corpus patterns; section 9 and preview pairing inspiration. |
-| Cursor | Host environment for project skills under `.cursor/skills/`. |
+| Cursor | **Primary** host for first-party **project skills** under `.cursor/skills/`. |
+| LLM-backed coding assistants (e.g. **GitHub Copilot**, **Claude Code**, **Google Gemini**–based tools, **OpenAI Codex**, **Mistral Codestral**) | **Consumers** of the same `DESIGN.md` / template / runbooks; no mandatory dependency for reading the spec or running Node previews ([FR-26](#8-functional-requirements)). |
 | [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) | Optional bridge for skills or tooling to call **Jira** and other PM APIs through editor-configured servers, feeding preview status badges. |
 | Atlassian Jira (or MCP Jira server) | Example PM backend; **status** field on issues drives badges described in [§5.6](#56-skill-config-and-mcp-project-management-status-on-previews). |
 
@@ -399,6 +420,8 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 | **Status badge (preview)** | Small label beside a component in catalog HTML showing the latest fetched **workflow status** (e.g. **Approved**) for the linked Jira issue. |
 | **`sample-images/`** | Default folder tree holding designer **screenshot attachments** keyed by scope id; rescanned on each preview run ([§5.7](#57-designer-screenshot-attachments-and-sample-images)). |
 | **Thumbnail strip** | Up to **three** small previews under a section/component/element in catalog HTML, plus text giving the **total** count of images on disk for that scope. |
+| **Multi-assistant usability** | Expectation that core repo artifacts support design-system authoring **without** locking the team to a single coding-assistant vendor; Cursor skills **enhance** Cursor, they do not replace portable template and `DESIGN.md` guidance ([§5.1](#51-in-scope), [FR-26](#8-functional-requirements)). |
+| **`docs/design-definition-form.md`** | Shared **Step 1** markdown intake for **designers and developers** (colors, Title 1 / type scale, layout, components, §7/§8 intent, engineering constraints, sign-off) before full `template-DESIGN.md` / `DESIGN.md` authoring ([FR-27](#8-functional-requirements), [§7.0](#70-shared-intake-designdefinitionformmd)). |
 
 ---
 
@@ -406,5 +429,5 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 
 - **Owner:** Repository maintainers (CodeCubicle-Org).
 - **Change process:** Update **Last modified** when materially editing requirements; bump **Document version** for major scope shifts (and for **consistency / traceability** edits that affect how readers interpret commitments).
-- **Related docs:** [`README.md`](../README.md), [`AGENTS.md`](../AGENTS.md), [`template-DESIGN.md`](../template-DESIGN.md).
-- **Revision notes (abridged):** **1.6** — PM consistency pass: executive summary aligned with **§5.4–§5.7**; **§5.4** framed as planned target skills; goal **6** / **8** wording aligned with snapshot PM status and expanded CLI scope; **FR-23** / **FR-24** raised to **Must** to match **§5.7**; persona **Design ops / PM** clarified as snapshot. **1.7** — **§5.0** skill-catalog extensibility; goal **10**; **FR-5** expanded; **NFR-11**; glossary and metrics aligned for **many future skills**.
+- **Related docs:** [`README.md`](../README.md), [`AGENTS.md`](../AGENTS.md), [`template-DESIGN.md`](../template-DESIGN.md), [`design-definition-form.md`](design-definition-form.md), [`design-language.md`](design-language.md).
+- **Revision notes (abridged):** **1.11** — **Node.js v24+** required for preview script and repo tooling (`engines`, runtime check in `generate-design-previews.mjs`, **FR-4**, **NFR-4**, template, README, `AGENTS.md`, generate-previews skill). **1.10** — **NFR-4** clarified: **Node.js only** for repo scripts/automation (no Python); `AGENTS.md` and README aligned. **1.6** — PM consistency pass: executive summary aligned with **§5.4–§5.7**; **§5.4** framed as planned target skills; goal **6** / **8** wording aligned with snapshot PM status and expanded CLI scope; **FR-23** / **FR-24** raised to **Must** to match **§5.7**; persona **Design ops / PM** clarified as snapshot. **1.7** — **§5.0** skill-catalog extensibility; goal **10**; **FR-5** expanded; **NFR-11**; glossary and metrics aligned for **many future skills**. **1.8** — **Multi-assistant / multi-LLM** product intent (Copilot, Claude Code, Cursor, Gemini, Codex, Codestral, etc.): executive summary, vision, goal **11**, persona, **§5.1** / **§5.2** / **§5.3**, **FR-26**, **NFR-12**, success metric, dependencies, glossary; **§5.0** note on portable skill prose. **1.9** — **`docs/design-definition-form.md`** shared **Step 1** designer–developer intake; **§7.0**, **§7.1** renumbered; goal **12**; **FR-27**; **§5.1** / problem / personas / executive summary / technical constraints / glossary / related docs.

@@ -4,7 +4,7 @@ description: >-
   Runs the Node.js script scripts/generate-design-previews.mjs to emit preview.html and
   preview-dark.html from DESIGN.md hex tokens; uses versioned preview-vN names
   when files already exist. Use when generating previews, preview.html, dark mode
-  catalog, Phase 6, or light dark token board. Requires Node 18+. No Python. Part
+  catalog, Phase 6, or light dark token board. Requires Node.js v24+. No Python. Part
   of the design-o-mat project.
 ---
 
