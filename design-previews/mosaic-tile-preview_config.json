@@ -1,0 +1,65 @@
+{
+  "$schemaVersion": "1.0.0",
+  "description": "Optional mosaic-tile preview overrides. Mosaic tiles are composite blocks that combine several elements/components to represent realistic product slices.",
+  "mosaicTiles": [
+    {
+      "id": "feature-spotlight",
+      "label": "Feature Spotlight Tile",
+      "intent": "Marketing highlight with supporting trust cues.",
+      "elements": [
+        "Eyebrow",
+        "Headline",
+        "SupportCopy",
+        "PrimaryCta",
+        "SecondaryLink",
+        "TrustBadges",
+        "MediaThumbnail"
+      ],
+      "componentRefs": [
+        "Badge",
+        "Button",
+        "Card",
+        "Icon"
+      ]
+    },
+    {
+      "id": "kpi-insight",
+      "label": "KPI Insight Tile",
+      "intent": "Dashboard summary tile with trend and status context.",
+      "elements": [
+        "Title",
+        "MetricValue",
+        "DeltaIndicator",
+        "Sparkline",
+        "StatusBadge",
+        "ContextNote"
+      ],
+      "componentRefs": [
+        "Badge",
+        "Card",
+        "Chart",
+        "Tooltip"
+      ]
+    },
+    {
+      "id": "commerce-product-highlight",
+      "label": "Commerce Product Highlight Tile",
+      "intent": "Product tile combining content, pricing, and purchase CTA.",
+      "elements": [
+        "ProductImage",
+        "Title",
+        "Rating",
+        "Price",
+        "PromoTag",
+        "PrimaryCta",
+        "StockNote"
+      ],
+      "componentRefs": [
+        "Badge",
+        "Button",
+        "Card",
+        "Rating"
+      ]
+    }
+  ]
+}

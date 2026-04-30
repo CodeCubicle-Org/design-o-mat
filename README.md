@@ -80,6 +80,7 @@ The current direction is to keep previews **smart** while remaining **static** a
 |---------|------|
 | `component-preview_config.json` | Declarative component examples/variants/states for component preview pages |
 | `layout-preview_config.json` | Declarative section/full-page layout compositions |
+| `mosaic-tile-preview_config.json` | Declarative composite mosaic tiles that combine multiple elements/components into richer preview blocks |
 | `preview-dashboard.html` | Single static entry page linking all preview families (with empty states when some outputs are not yet generated) |
 | `preview-manifest.json` (recommended) | Machine-readable list of generated preview pages and metadata |
 | `preview-links.json` (recommended) | Normalized navigation/link data used by dashboard and preview pages |
@@ -90,6 +91,7 @@ By default, these are managed in `design-previews/`:
 - `design-previews/preview-config.json` (global defaults + override rules)
 - `design-previews/component-preview_config.json` (component-specific overrides)
 - `design-previews/layout-preview_config.json` (layout/page-specific overrides)
+- `design-previews/mosaic-tile-preview_config.json` (mosaic tile-specific overrides)
 
 Optional Storybook bridge for component previews:
 
@@ -104,6 +106,7 @@ Optional Storybook bridge for component previews:
 - Standalone changelog preview page(s)
 - Component preview pages (from `component-preview_config.json`)
 - Layout/page preview pages (from `layout-preview_config.json`)
+- Mosaic tile preview pages (from `mosaic-tile-preview_config.json`)
 - One project dashboard (`preview-dashboard.html`) linking all of the above
 
 ### Portability rule

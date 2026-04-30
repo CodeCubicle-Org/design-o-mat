@@ -40,6 +40,7 @@ Teams doing LLM-assisted UI work often face spec drift, inconsistent prompting, 
    - `design-previews/preview-config.json` (global defaults + override rules)
    - `design-previews/component-preview_config.json` (component states/variants)
    - `design-previews/layout-preview_config.json` (section/full-page compositions)
+   - `design-previews/mosaic-tile-preview_config.json` (composite mosaic tiles that combine multiple elements/components)
 6. Static preview dashboard and schema artifacts:
    - `preview-dashboard.html`
    - `preview-manifest.json`, `preview-links.json`, `preview-stats.json`
@@ -65,6 +66,7 @@ Teams doing LLM-assisted UI work often face spec drift, inconsistent prompting, 
 - Ensure preview generation degrades gracefully for external integration failures.
 - Preserve override precedence semantics across preview modes (independent and optional Storybook path).
 - Keep preview artifacts static-first and backend-free at view time.
+- Support richer preview compositions through mosaic tiles (multi-element, multi-component blocks) in addition to component and layout surfaces.
 
 ## Non-Goals
 

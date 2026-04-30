@@ -76,6 +76,20 @@
       ]
     }
   },
+  "mosaicTiles": {
+    "enabled": true,
+    "configFile": "mosaic-tile-preview_config.json",
+    "outputFile": "preview-mosaic-tiles.html",
+    "fallback": {
+      "mode": "auto",
+      "includeCoreTiles": true,
+      "coreTiles": [
+        "feature-spotlight",
+        "kpi-insight",
+        "commerce-product-highlight"
+      ]
+    }
+  },
   "dashboard": {
     "enabled": true,
     "file": "preview-dashboard.html",
@@ -92,7 +106,8 @@
       "catalog",
       "changelog",
       "components",
-      "layouts"
+      "layouts",
+      "mosaicTiles"
     ]
   },
   "sampleImages": {
