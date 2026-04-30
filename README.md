@@ -6,7 +6,8 @@ In practice, the project provides:
 - a shared authoring flow for documenting visual rules and interaction language,
 - local static preview generation (design-system catalog, component/layout surfaces, dashboard),
 - reusable templates/examples for how components and layouts should look,
-- optional Jira/PM status snapshots embedded in previews to keep design intent and delivery state connected.
+- optional Jira/PM status snapshots embedded in previews to keep design intent and delivery state connected,
+- optional git commit traceability (including GitHub commit links) for mapped components/elements in preview surfaces.
 
 ## Contents
 

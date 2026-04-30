@@ -18,6 +18,7 @@ Teams doing LLM-assisted UI work often face spec drift, inconsistent prompting, 
 - repeatable runbooks for validation and previewing,
 - and a static, framework-agnostic preview model with optional Storybook bridge support.
 - optional PM/Jira status snapshots on previews so design definitions and delivery state stay aligned.
+- optional git commit traceability on previews (including GitHub commit links) for element/component-level implementation tracking.
 
 ## Target Users
 
@@ -64,6 +65,7 @@ Teams doing LLM-assisted UI work often face spec drift, inconsistent prompting, 
 - Preserve skill catalog governance and discoverability as skill count grows.
 - Keep core artifacts assistant-agnostic; Cursor skills are ergonomic acceleration, not the only path.
 - Ensure preview generation degrades gracefully for external integration failures.
+- Support optional commit-level traceability on previews (SHA/URL mappings), parallel to issue-status tracking.
 - Preserve override precedence semantics across preview modes (independent and optional Storybook path).
 - Keep preview artifacts static-first and backend-free at view time.
 - Support richer preview compositions through mosaic tiles (multi-element, multi-component blocks) in addition to component and layout surfaces.

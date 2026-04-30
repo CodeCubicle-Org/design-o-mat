@@ -204,6 +204,7 @@ Teams track design-system work in **issue trackers** (e.g. **Jira**). The produc
 | **Preview rendering** | Catalog previews (`preview.html` / `preview-dark.html` and versioned pairs) MUST render the status **adjacent to** the corresponding component section (e.g. subtitle, pill, or table column: `Button` — badge **Approved**), using the same typography and color tokens as the rest of the page so it does not read as an alien widget. |
 | **Failure modes** | If MCP is unavailable, auth fails, or an issue key is invalid, the preview MUST **degrade gracefully** (e.g. badge `—`, `Unknown`, or last cached value with a subtle “stale” hint) and MUST NOT break generation of the rest of the catalog. |
 | **Other PM tools** | The same pattern SHOULD generalize beyond Jira (e.g. **Linear**, **Azure DevOps**) via additional MCP servers and config entries, without changing the `DESIGN.md` mapping shape more than necessary. |
+| **Git commit tracking (optional)** | Similar to issue-status linkage, teams MAY map elements/components to **git commit references** (SHA, short SHA, or commit URL) and render a commit badge/link in previews. The workflow SHOULD support local git metadata and hosted providers, including **GitHub commit URLs**. If commit metadata cannot be resolved, preview generation MUST still succeed with a defined fallback. |
 
 ### 5.7 Designer screenshot attachments and sample images
 
@@ -281,7 +282,7 @@ The **design-o-mat** `DESIGN.md` (and authoring guidance we publish for teams th
 | **Content type** | Prose, tables, lists, and fenced examples that illustrate appearance or usage **without** being mistaken for shell commands to run (e.g. sample CSS or JSX in clearly labeled blocks). |
 | **Source of truth** | The Definition area is authoritative for **what** the UI should look like and how it should behave. |
 | **Pairing rules** | Normative **color combination** tables (allowed/forbidden foreground-on-background, accent usage) live in the Definition when the product adopts the color-rules skill (§5.4.4 under [§5.4](#54-planned-cursor-skills-moodboards-change-requests-variations-combination-rules)); they are inputs to previews and validation. |
-| **PM linkage** | Optional per-component **issue keys** (Jira, etc.) live in the Definition when teams use [§5.6](#56-skill-config-and-mcp-project-management-status-on-previews); they are not required for a valid Stitch-style doc. |
+| **PM linkage** | Optional per-component **issue keys** (Jira, etc.) and optional **git commit references** (SHA/URL) live in the Definition when teams use [§5.6](#56-skill-config-and-mcp-project-management-status-on-previews); they are not required for a valid Stitch-style doc. |
 | **Screenshot scope ids** | Optional **stable ids** (for `sample-images/<id>/` folders) for sections, components, and named elements live in the Definition when teams use [§5.7](#57-designer-screenshot-attachments-and-sample-images). |
 
 ### 6.2 Action area
@@ -343,6 +344,7 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 2. Add or edit **`design-o-mat-pm.config.yaml`** (or shipped equivalent) → set MCP server id, field id for **status**, display rules for badges.
 3. In **`DESIGN.md` §4**, add **issue keys** next to components that should show status (e.g. Button → `PROJ-123`).
 4. Run the **documented** workflow (agent + MCP fetch, then `npm run generate-previews`, or a future single command) → confirm **Approved** (or current status) appears **beside** the Button block on light/dark previews.
+5. Optional: add **commit references** (SHA/URL) for components/elements that need implementation traceability, then regenerate previews and confirm a commit badge/link is shown (including **GitHub** commit links when provided).
 
 ### 7.5 Designer screenshots (`sample-images`)
 
@@ -400,6 +402,7 @@ Authors SHOULD place procedural steps from the template/skills that are “alway
 | FR-20 | `DESIGN.md` SHOULD support an optional, documented mapping from **design elements** (e.g. Button) to **external issue keys** so status lookup is deterministic ([§5.6](#56-skill-config-and-mcp-project-management-status-on-previews)). | Should |
 | FR-21 | When PM integration is enabled and mappings exist, **design-system** previews SHOULD show the retrieved **status** next to the corresponding component on **both** light and dark pages ([§5.6](#56-skill-config-and-mcp-project-management-status-on-previews)). | Should |
 | FR-22 | If MCP or the PM API is unavailable, preview generation MUST still succeed and MUST show a **defined fallback** for badges ([§5.6](#56-skill-config-and-mcp-project-management-status-on-previews)). | Must |
+| FR-43 | The repo SHOULD support optional per-element/per-component **git commit tracking** in previews (SHA and/or URL), including **GitHub commit links**, with graceful fallback when commit metadata is missing or invalid ([§5.6](#56-skill-config-and-mcp-project-management-status-on-previews)). | Should |
 | FR-23 | The product **MUST** support attaching designer **screenshots** to **sections**, **components**, and **elements** via files under **`sample-images/`** (or documented alternate, e.g. `sample-image/`) with a **stable scope id** per [§5.7](#57-designer-screenshot-attachments-and-sample-images). Teams MAY omit folders when they have no attachments. | Must |
 | FR-24 | When attachments exist for a scope, catalog previews **MUST** render **below** that block: **≤ 3** tiny **thumbnail** previews plus the **total number** of image files in that folder ([§5.7](#57-designer-screenshot-attachments-and-sample-images)). | Must |
 | FR-25 | The **sample-images** skill or preview pipeline MUST **rescan** image folders on **every** preview generation run so attachment strips match current files on disk ([§5.7](#57-designer-screenshot-attachments-and-sample-images)). | Must |
@@ -526,6 +529,7 @@ The following are important constraints but may be conditional on feature enable
 | LLM-backed coding assistants (e.g. **GitHub Copilot**, **Claude Code**, **Google Gemini**–based tools, **OpenAI Codex**, **Mistral Codestral**) | **Consumers** of the same `DESIGN.md` / template / runbooks; no mandatory dependency for reading the spec or running Node previews ([FR-26](#8-functional-requirements)). |
 | [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) | Optional bridge for skills or tooling to call **Jira** and other PM APIs through editor-configured servers, feeding preview status badges. |
 | Atlassian Jira (or MCP Jira server) | Example PM backend; **status** field on issues drives badges described in [§5.6](#56-skill-config-and-mcp-project-management-status-on-previews). |
+| Git (local repo metadata) and GitHub (optional) | Optional source for commit traceability shown beside mapped elements/components in previews (SHA/link snapshots) per [§5.6](#56-skill-config-and-mcp-project-management-status-on-previews). |
 
 ---
 
@@ -548,6 +552,7 @@ The following are important constraints but may be conditional on feature enable
 | **Preview change history** | Ordered list of notable changes to tokens, previews, or CRs, rendered at the end of catalog previews inside a **collapsed-by-default** disclosure and again on a **standalone** changelog HTML page sharing the same visual design. |
 | **Skill PM config** | Repo-level file declaring MCP server ids and PM **field mappings** (e.g. Jira **status**) for enriching previews; excludes secrets ([§5.6](#56-skill-config-and-mcp-project-management-status-on-previews)). |
 | **Status badge (preview)** | Small label beside a component in catalog HTML showing the latest fetched **workflow status** (e.g. **Approved**) for the linked Jira issue. |
+| **Commit badge/link (preview)** | Optional label or link beside a component/element showing a mapped commit reference (SHA/short SHA or URL), including GitHub commit links when configured. |
 | **`sample-images/`** | Default folder tree holding designer **screenshot attachments** keyed by scope id; rescanned on each preview run ([§5.7](#57-designer-screenshot-attachments-and-sample-images)). |
 | **Thumbnail strip** | Up to **three** small previews under a section/component/element in catalog HTML, plus text giving the **total** count of images on disk for that scope. |
 | **Preview dashboard** | A single static project page that links all preview artifacts and may include static generation-time summaries (counts/trends/last updated), without backend dependencies. |
