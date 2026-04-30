@@ -1,6 +1,12 @@
 # design-o-mat
 
-**design-o-mat** is an authoring toolkit for a [Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/)-style **`DESIGN.md`**: a single markdown spec for how your UI should look, plus optional HTML previews and Cursor **project skills** so you can run one phase of the workflow at a time.
+**design-o-mat** is a collaboration toolkit for defining both your **design system** and your **design language** in one living, project-owned source of truth (`DESIGN.md`, Stitch-style). It helps designers, UX experts, and developers continuously feed changes into the same workflow, regenerate local previews, and keep examples/templates aligned with real project decisions over the full product lifecycle.
+
+In practice, the project provides:
+- a shared authoring flow for documenting visual rules and interaction language,
+- local static preview generation (design-system catalog, component/layout surfaces, dashboard),
+- reusable templates/examples for how components and layouts should look,
+- optional Jira/PM status snapshots embedded in previews to keep design intent and delivery state connected.
 
 ## Contents
 
@@ -60,12 +66,13 @@ These skills live under **`.cursor/skills/`**. Cursor loads **project skills** w
 
 ## Preview architecture (smart + static)
 
-The current direction is to keep previews **smart** while remaining **static** and **framework-agnostic**:
+The current direction is to keep previews **smart** while remaining **static** and **framework-agnostic**, so teams can run a fast local design roundtrip without backend dependencies:
 
 - Build-time workflows (skills and/or neutral Node scripts) compute intelligence such as counts, links, coverage, and trend summaries.
 - Runtime pages are static `HTML/CSS/JS` and read generated local JSON artifacts.
 - No backend/database/live API is required to open previews.
 - React (or any other framework) may be used in generation tooling, but generated preview artifacts must be consumable without that runtime.
+- This keeps design docs, preview artifacts, and implementation guidance easy to refresh whenever designers, UX, or engineering update the system.
 
 ### Expected preview inputs and generated artifacts
 

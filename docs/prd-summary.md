@@ -2,21 +2,22 @@
 
 ## Product Snapshot
 
-design-o-mat is a documentation-first toolkit for creating portable, agent-readable `DESIGN.md` files in the Google Stitch style, extended with awesome-design-md patterns. It combines:
+design-o-mat is a documentation-first collaboration toolkit for creating and maintaining a living `DESIGN.md` that defines both the design system and the design language (Google Stitch style, extended with awesome-design-md patterns). It combines:
 - a structured authoring template,
 - a shared designer/developer intake form,
-- static-first preview generation with configurable surfaces,
+- static-first local preview generation with configurable surfaces and reusable examples/templates,
 - and Cursor skills for phase-based execution.
 
-The project emphasizes portability: core guidance remains usable outside Cursor with neutral markdown, shell, and Node workflows, while Cursor skills provide an ergonomic acceleration layer.
+The project emphasizes portability and lifecycle roundtrip collaboration: designers, UX experts, and developers can all feed updates into shared artifacts, regenerate previews, and keep definitions current over time. Core guidance remains usable outside Cursor with neutral markdown, shell, and Node workflows, while Cursor skills provide an ergonomic acceleration layer.
 
 ## Problem It Solves
 
-Teams doing LLM-assisted UI work often face spec drift, inconsistent prompting, and disconnected design/engineering decisions. design-o-mat establishes:
+Teams doing LLM-assisted UI work often face spec drift, inconsistent prompting, disconnected design/UX/engineering decisions, and outdated design documentation. design-o-mat establishes:
 - one canonical design spec format,
 - a shared intake baseline before deep authoring,
 - repeatable runbooks for validation and previewing,
 - and a static, framework-agnostic preview model with optional Storybook bridge support.
+- optional PM/Jira status snapshots on previews so design definitions and delivery state stay aligned.
 
 ## Target Users
 
@@ -25,6 +26,7 @@ Teams doing LLM-assisted UI work often face spec drift, inconsistent prompting, 
 - Coding/UI agents
 - Maintainers porting the workflow to other repos
 - Visual designers and PM/design-ops stakeholders
+- UX experts feeding interaction/design-language decisions
 
 ## Core Capabilities (Documented as Present)
 

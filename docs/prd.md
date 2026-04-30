@@ -13,7 +13,9 @@
 
 ## 1. Executive summary
 
-**design-o-mat** is an authoring toolkit for producing a single-file UI specification in the [Google Stitch `DESIGN.md`](https://stitch.withgoogle.com/docs/design-md/overview/) style, extended with patterns from [VoltAgent awesome-design-md](https://github.com/VoltAgent/awesome-design-md). The product bundles a phased authoring template, optional HTML light/dark previews generated from documented tokens, and Cursor **project skills** so humans and agents can execute one workflow phase at a time with consistent quality. **Step 1 (shared intake)** is the markdown form **`docs/design-definition-form.md`**: designers and developers fill predefined fields (product identity, **primary and accent color**, typography including **Title 1** font and size, layout tokens, component checklist, §7/§8 intent, engineering constraints) **before** deep work in `docs/template-DESIGN.md`. The same **spec, template, runbooks, and scripts** are intended to stay **usable across coding assistants and model vendors** (for example **GitHub Copilot**, **Claude Code**, **Cursor**, **Google Gemini**–based tools, **OpenAI Codex**, **Mistral Codestral**, and comparable products); Cursor skills are the **first-party** automation layer in this repository, not the only environment where the workflow applies.
+**design-o-mat** is a project-level system for documenting both the **design system** and the broader **design language** in a living [Google Stitch `DESIGN.md`](https://stitch.withgoogle.com/docs/design-md/overview/) format (extended with patterns from [VoltAgent awesome-design-md](https://github.com/VoltAgent/awesome-design-md)). The product bundles a phased authoring template, optional HTML light/dark previews generated from documented tokens, and Cursor **project skills** so humans and agents can execute one workflow phase at a time with consistent quality. **Step 1 (shared intake)** is the markdown form **`docs/design-definition-form.md`**: designers, UX contributors, and developers fill predefined fields (product identity, **primary and accent color**, typography including **Title 1** font and size, layout tokens, component checklist, §7/§8 intent, engineering constraints) **before** deep work in `docs/template-DESIGN.md`.
+
+The goal is continuous **roundtrip collaboration**: each discipline can feed inputs back into the same artifacts, regenerate previews locally, and keep documentation, examples, and implementation intent synchronized through the entire product lifecycle. The same **spec, template, runbooks, and scripts** are intended to stay **usable across coding assistants and model vendors** (for example **GitHub Copilot**, **Claude Code**, **Cursor**, **Google Gemini**–based tools, **OpenAI Codex**, **Mistral Codestral**, and comparable products); Cursor skills are the **first-party** automation layer in this repository, not the only environment where the workflow applies.
 
 This PRD defines what the project is for, who it serves, what is in scope, and how success is measured so contributors and consumers can align on expectations beyond the README alone.
 
@@ -41,11 +43,11 @@ Planned work is organized under **§5** (**§5.0** governance, **§5.4–§5.10*
 
 ### 2.1 Vision
 
-Make it practical for any team to maintain a **portable, agent-readable design spec** (`DESIGN.md`) that stays aligned with Stitch semantics, corpus reality (including known §7/§8 variants), and optional visual previews—without requiring a proprietary design tool—while remaining **actionable** whether the team’s coding assistant is **Copilot, Claude Code, Cursor, Gemini-based tooling, Codex, Codestral**, or another LLM-backed editor integration.
+Make it practical for any team to maintain a **portable, agent-readable design definition** (`DESIGN.md`) that captures both **design-system rules** and **design-language intent**, stays aligned with Stitch semantics and corpus reality (including known §7/§8 variants), and remains continuously testable through local previews/templates—without requiring a proprietary design tool—while remaining **actionable** whether the team’s coding assistant is **Copilot, Claude Code, Cursor, Gemini-based tooling, Codex, Codestral**, or another LLM-backed editor integration.
 
 ### 2.2 Primary goals
 
-1. **Reduce spec drift** — One canonical markdown file; clear separation between authoring notes (Parts I–III in the template) and the shipped Part IV body.
+1. **Reduce design drift** — One canonical markdown source for design-system and design-language decisions; clear separation between authoring notes (Parts I–III in the template) and the shipped Part IV body.
 2. **Improve agent outcomes** — Skills with explicit triggers; section 9 (Agent Prompt Guide) for few-shot UI generation and iteration.
 3. **Support evidence-based authoring** — Phases for scope lock, live capture, normalization, validation, preview generation, and ship.
 4. **Stay format-compatible** — Document and tooling respect Stitch numbering and awesome-design-md extensions, including documented corpus exceptions for sections 7 and 8.
@@ -57,6 +59,7 @@ Make it practical for any team to maintain a **portable, agent-readable design s
 10. **Extensible skills surface** — New capabilities ship as **additional project skills** under documented conventions ([§5.0](#50-skill-catalog-and-extensibility)); the README (or **skills catalog** doc) and this PRD stay aligned so humans and agents always know what exists and when to use it.
 11. **Multi-assistant authoring** — Core artifacts (`DESIGN.md`, `docs/template-DESIGN.md`, `AGENTS.md`, preview pipeline, Action-area runbooks) SHOULD **not** assume a single vendor; documentation SHOULD make phase intent clear enough to follow with **GitHub Copilot**, **Claude Code**, **Cursor**, **Gemini**-class assistants, **OpenAI Codex**, **Mistral Codestral**, and similar tools ([FR-26](#8-functional-requirements)).
 12. **Designer–developer intake** — A single **Step 1** form (`docs/design-definition-form.md`) captures agreed tokens and type basics so both roles start from the same facts before Parts I–III and `DESIGN.md` drafting ([FR-27](#8-functional-requirements), [§7.0](#70-shared-intake-designdefinitionformmd)).
+13. **Lifecycle roundtrip** — Designers, UX experts, and developers can iterate in all directions (brief -> spec -> preview -> implementation feedback -> updated spec) without resetting process artifacts each cycle.
 
 ### 2.3 Non-goals
 
@@ -68,7 +71,7 @@ Make it practical for any team to maintain a **portable, agent-readable design s
 
 ## 3. Problem statement
 
-Teams want LLM-assisted UI work to be **repeatable** and **on-brand**, but ad-hoc prompts and scattered style notes produce inconsistent components, wrong contrast, and missing states. **Design and engineering** often diverge before a spec exists: a **shared intake form** (`docs/design-definition-form.md`) establishes a common baseline (colors, Title 1 / body type, layout, component scope) **first**. A Stitch-aligned `DESIGN.md` addresses the full system, yet authors need **guidance**, **checklists**, and **optional automation** (previews) so the spec stays complete, validated, and shippable. design-o-mat packages that workflow into copyable artifacts and agent skills.
+Teams want LLM-assisted UI work to be **repeatable**, **on-brand**, and shared across design, UX, and engineering, but ad-hoc prompts and scattered notes produce inconsistent components, wrong contrast, missing states, and unclear design-language intent. **Design and engineering** often diverge before a spec exists: a **shared intake form** (`docs/design-definition-form.md`) establishes a common baseline (colors, Title 1 / body type, layout, component scope) **first**. A Stitch-aligned `DESIGN.md` addresses the full system, yet authors need **guidance**, **checklists**, and **optional automation** (previews, examples, and status snapshots) so the definition stays complete, validated, and continuously up to date. design-o-mat packages that workflow into copyable artifacts and agent skills.
 
 ---
 
