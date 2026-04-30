@@ -8,9 +8,10 @@
 |------|---------|
 | [`design-definition-form.md`](docs/design-definition-form.md) | **Step 1** shared intake for designers + developers (colors, Title 1 type, layout, components, sign-off) before `template-DESIGN.md` |
 | [`design-language.md`](docs/design-language.md) | Optional designer-voice companion to the intake form (north star, color story, type voice); fill after or alongside Step 1 |
-| [`template-DESIGN.md`](template-DESIGN.md) | Full authoring guide (checklist, questionnaire, phases 0–7, Part IV body template) |
+| [`template-DESIGN.md`](docs/template-DESIGN.md) | Full authoring guide (checklist, questionnaire, phases 0–7, Part IV body template) |
 | [`awesome-design-md-corpus-analysis.md`](awesome-design-md-corpus-analysis.md) | How VoltAgent [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) `DESIGN.md` files are structured |
-| [`scripts/generate-design-previews.mjs`](scripts/generate-design-previews.mjs) | Node script: builds `preview.html` + `preview-dark.html` from hex tokens in `DESIGN.md` (versioned `preview-vN` if files exist) |
+| [`scripts/generate-design-previews.mjs`](scripts/generate-design-previews.mjs) | Node script: builds static preview artifacts (catalog light/dark, plus optional component/layout/dashboard surfaces as workflow expands) |
+| [`design-previews/storybook/`](design-previews/storybook/) | Optional Storybook bridge (mapping guide + starter Storybook config/story templates for component previews) |
 | [`package.json`](package.json) | `npm run generate-previews`; **all** repo scripts are **Node.js v24+** (no Python stack) |
 | [`AGENTS.md`](AGENTS.md) | Pointers for coding vs design agents |
 | [`.cursor/skills/`](.cursor/skills/) | Cursor **project skills** (`design-md-*`) |
@@ -53,9 +54,54 @@ These skills live under **`.cursor/skills/`**. Cursor loads **project skills** w
 
 ### Tips
 
-- Skills **point at** [`template-DESIGN.md`](template-DESIGN.md) for step tables; open that file alongside the skill for full detail.  
+- Skills **point at** [`template-DESIGN.md`](docs/template-DESIGN.md) for step tables; open that file alongside the skill for full detail.  
 - **`DESIGN.md`** is the source of truth for fonts and nuance; previews may use **Inter** as a fallback — see Phase 6 in the template.  
-- To use skills in **other projects**, copy `.cursor/skills/design-md-*` (and optionally `template-DESIGN.md` + `scripts/generate-design-previews.mjs`) into that repo’s `.cursor/skills/` and project root.
+- To use skills in **other projects**, copy `.cursor/skills/design-md-*` (and optionally `docs/template-DESIGN.md` + `scripts/generate-design-previews.mjs`) into that repo’s `.cursor/skills/` and project root.
+
+## Preview architecture (smart + static)
+
+The current direction is to keep previews **smart** while remaining **static** and **framework-agnostic**:
+
+- Build-time workflows (skills and/or neutral Node scripts) compute intelligence such as counts, links, coverage, and trend summaries.
+- Runtime pages are static `HTML/CSS/JS` and read generated local JSON artifacts.
+- No backend/database/live API is required to open previews.
+- React (or any other framework) may be used in generation tooling, but generated preview artifacts must be consumable without that runtime.
+
+### Expected preview inputs and generated artifacts
+
+| Artifact | Role |
+|---------|------|
+| `component-preview_config.json` | Declarative component examples/variants/states for component preview pages |
+| `layout-preview_config.json` | Declarative section/full-page layout compositions |
+| `preview-dashboard.html` | Single static entry page linking all preview families (with empty states when some outputs are not yet generated) |
+| `preview-manifest.json` (recommended) | Machine-readable list of generated preview pages and metadata |
+| `preview-links.json` (recommended) | Normalized navigation/link data used by dashboard and preview pages |
+| `preview-stats.json` (recommended) | Precomputed counters/trend summaries for static display |
+
+By default, these are managed in `design-previews/`:
+
+- `design-previews/preview-config.json` (global defaults + override rules)
+- `design-previews/component-preview_config.json` (component-specific overrides)
+- `design-previews/layout-preview_config.json` (layout/page-specific overrides)
+
+Optional Storybook bridge for component previews:
+
+- `design-previews/storybook/` (mapping guide + starter Storybook files)
+- This is for teams that want/need Storybook in their projects.
+- Teams staying independent can ignore this folder and use the JSON configs directly.
+- Override behavior remains aligned: global defaults -> component defaults -> preview/story override.
+
+### Preview families
+
+- Design-system catalog previews (`preview.html`, `preview-dark.html`, and versioned variants)
+- Standalone changelog preview page(s)
+- Component preview pages (from `component-preview_config.json`)
+- Layout/page preview pages (from `layout-preview_config.json`)
+- One project dashboard (`preview-dashboard.html`) linking all of the above
+
+### Portability rule
+
+Cursor skills are the primary ergonomic interface in this repo, but equivalent neutral script workflows should exist so teams using other assistants/tooling can regenerate the same static artifacts.
 
 ## Previews (Node)
 

@@ -22,7 +22,7 @@ Produce a readable **§1–§8** that matches the user’s **Part II G** choices
 
 ## Steps
 
-1. Open [template-DESIGN.md](template-DESIGN.md) **Phase 3 — Draft narrative, components, and §7–§8** (steps 3.1–3.5) and **Part IV** cheatsheet for heading variants.
+1. Open [template-DESIGN.md](../../../docs/template-DESIGN.md) **Phase 3 — Draft narrative, components, and §7–§8** (steps 3.1–3.5) and **Part IV** cheatsheet for heading variants.
 2. **§1:** 2–4 paragraphs + mandatory `**Key Characteristics:**` (6–12 bullets); U16 provenance if unofficial; optional extraction stats.
 3. **§2–§6:** Merge Phase 2 prose; remove bracket instructions and placeholders.
 4. **§4:** Buttons (all variants + hover/focus/active/disabled); Cards, Inputs, Navigation, Image Treatment; optional Icons; **Distinctive components** subsections as needed.

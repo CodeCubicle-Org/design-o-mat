@@ -7,7 +7,7 @@
 1. **Duplicate this file** into your project (e.g. `design-definition-form.md` next to where `DESIGN.md` will live). Do not treat this repo’s copy as your team’s source of truth unless you are authoring design-o-mat itself.
 2. **Design** owns visual intent (colors, type, density, metaphors). **Engineering** owns constraints (stack, existing tokens, accessibility targets, what is already shipped in code).
 3. Optional: draft [`design-language.md`](design-language.md) in **designer vocabulary** (north star, color story, type voice, spatial metaphor) so critiques and agent prompts align on *intent*, not only hex and px.
-4. When the form is **complete enough to proceed** (minimum: **product name**, **primary + accent color intent**, **Title 1** and **body** typography, **light/dark** stance), continue with **`template-DESIGN.md`** (Parts I–III inventory and questionnaire) and the phased workflow in the [PRD](prd.md) / [`AGENTS.md`](../AGENTS.md).
+4. When the form is **complete enough to proceed** (minimum: **product name**, **primary + accent color intent**, **Title 1** and **body** typography, **light/dark** stance), continue with **`docs/template-DESIGN.md`** (Parts I–III inventory and questionnaire) and the phased workflow in the [PRD](prd.md) / [`AGENTS.md`](../AGENTS.md).
 
 **Maps to Stitch-style `DESIGN.md` sections:** §1 theme · §2 color · §3 typography · §4 components (high level) · §5 layout · §6 depth · §7/§8 choices · §9 prompts (later). **Section K** (inspiration image) feeds mood and palette cues into §1–§3 and into [`design-language.md`](design-language.md).
 
@@ -140,7 +140,7 @@ Check what **must** appear in `DESIGN.md` §4 with **states** (default, hover, f
 | **Standard breakpoints** | | Names + px or `to be measured`. |
 | **Minimum touch target** | | e.g. `44×44` CSS px. |
 
-**Section 7 primary role** (pick one for your `DESIGN.md`; see `template-DESIGN.md` Part II G):  
+**Section 7 primary role** (pick one for your `DESIGN.md`; see `docs/template-DESIGN.md` Part II G):  
 ☐ Do’s and Don’ts · ☐ Interaction & Motion · ☐ Dark Mode · ☐ Responsive (part 1 of split)  
 _Rationale:_
 
@@ -201,7 +201,7 @@ After running the helper, use a visual matcher on the **same** file or a **tight
 
 ## I. Sign-off to proceed
 
-We agree this form is **complete enough** to start **Part I–III** in `template-DESIGN.md` (or equivalent scope lock) and draft Part IV toward `DESIGN.md`.
+We agree this form is **complete enough** to start **Part I–III** in `docs/template-DESIGN.md` (or equivalent scope lock) and draft Part IV toward `DESIGN.md`.
 
 | Role | Name | Date |
 |------|------|------|
@@ -220,9 +220,9 @@ _List anything still undecided; resolve before or during normalization phase._
 
 ---
 
-## J. Mapping to `template-DESIGN.md` and Stitch
+## J. Mapping to `docs/template-DESIGN.md` and Stitch
 
-Use this table when moving into **Part I (U1–U16)** and **Part II** of [`template-DESIGN.md`](../template-DESIGN.md). It is a **hint**, not a second source of truth—the template rows still win if you discover conflicts.
+Use this table when moving into **Part I (U1–U16)** and **Part II** of [`template-DESIGN.md`](template-DESIGN.md). It is a **hint**, not a second source of truth—the template rows still win if you discover conflicts.
 
 | Form section | Template Part I (examples) | Stitch / Part IV (examples) |
 |--------------|----------------------------|-----------------------------|

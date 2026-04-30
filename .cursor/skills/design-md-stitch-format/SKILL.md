@@ -21,7 +21,7 @@ Align authoring or review with the **documented** conventions in this repo witho
 ## Steps
 
 1. Read [awesome-design-md-corpus-analysis.md](awesome-design-md-corpus-analysis.md) for universal vs varying sections.
-2. Read **Corpus alignment** and **§7/§8** guidance in [template-DESIGN.md](template-DESIGN.md) (top of file).
+2. Read **Corpus alignment** and **§7/§8** guidance in [template-DESIGN.md](../../../docs/template-DESIGN.md) (top of file).
 3. For deep exception tables, open this skill’s [reference.md](reference.md).
 
 ## Outputs

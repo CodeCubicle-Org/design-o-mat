@@ -1,0 +1,116 @@
+{
+  "$schemaVersion": "1.0.0",
+  "description": "Global preview configuration for design-o-mat. Any missing value falls back to defaults. Any provided value overrides defaults.",
+  "overrideRules": {
+    "missingSection": "use_defaults",
+    "missingProperty": "use_property_default",
+    "nullValue": "use_property_default",
+    "emptyArray": "use_property_default_if_documented",
+    "explicitValue": "override_default"
+  },
+  "paths": {
+    "outputDir": ".",
+    "dashboardFile": "preview-dashboard.html",
+    "manifestFile": "preview-manifest.json",
+    "linksFile": "preview-links.json",
+    "statsFile": "preview-stats.json"
+  },
+  "catalog": {
+    "enabled": true,
+    "lightFile": "preview.html",
+    "darkFile": "preview-dark.html",
+    "versioning": {
+      "enabled": true,
+      "patternLight": "preview-v{n}.html",
+      "patternDark": "preview-dark-v{n}.html",
+      "startAt": 2
+    }
+  },
+  "changelog": {
+    "enabled": true,
+    "embedInCatalog": true,
+    "collapsedByDefault": true,
+    "lightFile": "preview-changelog.html",
+    "darkFile": "preview-changelog-dark.html",
+    "dataSource": {
+      "type": "markdown",
+      "path": "docs/preview-changelog.md"
+    }
+  },
+  "components": {
+    "enabled": true,
+    "configFile": "component-preview_config.json",
+    "outputFile": "preview-components.html",
+    "fallback": {
+      "mode": "auto",
+      "includeCoreExamples": true,
+      "coreComponents": [
+        "Button",
+        "Input",
+        "Card",
+        "Navigation",
+        "Modal",
+        "Table"
+      ],
+      "defaultStates": [
+        "default",
+        "hover",
+        "focus",
+        "disabled"
+      ]
+    }
+  },
+  "layouts": {
+    "enabled": true,
+    "configFile": "layout-preview_config.json",
+    "outputFile": "preview-layouts.html",
+    "fallback": {
+      "mode": "auto",
+      "includeCoreLayouts": true,
+      "coreLayouts": [
+        "marketing-hero",
+        "feature-grid",
+        "pricing-section",
+        "dashboard-overview",
+        "settings-page"
+      ]
+    }
+  },
+  "dashboard": {
+    "enabled": true,
+    "file": "preview-dashboard.html",
+    "title": "Design Preview Dashboard",
+    "showEmptyStates": true,
+    "showLastUpdated": true,
+    "showStats": true,
+    "statSources": {
+      "manifest": "preview-manifest.json",
+      "stats": "preview-stats.json",
+      "changelog": "docs/preview-changelog.md"
+    },
+    "sections": [
+      "catalog",
+      "changelog",
+      "components",
+      "layouts"
+    ]
+  },
+  "sampleImages": {
+    "enabled": true,
+    "rootDir": "sample-images",
+    "maxThumbnailsPerScope": 3,
+    "supportedExtensions": [
+      "png",
+      "jpg",
+      "jpeg",
+      "webp",
+      "gif"
+    ],
+    "rescanEveryRun": true
+  },
+  "pmStatus": {
+    "enabled": false,
+    "snapshotFile": "preview-pm-status.json",
+    "fallbackBadge": "Unknown"
+  }
+}

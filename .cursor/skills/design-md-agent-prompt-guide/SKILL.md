@@ -20,7 +20,7 @@ Make §9 **paste-ready** for coding agents: dense token recap, quoted full-sente
 
 ## Steps
 
-1. Open [template-DESIGN.md](template-DESIGN.md) **Phase 4 — Agent Prompt Guide** (steps 4.1–4.3) and **Part IV §9** template.
+1. Open [template-DESIGN.md](../../../docs/template-DESIGN.md) **Phase 4 — Agent Prompt Guide** (steps 4.1–4.3) and **Part IV §9** template.
 2. Add `### Quick Color Reference` with **6–12** bullets (background, text, CTA, border, focus, frequent accents).
 3. Add `### Example Component Prompts` with **3–8** double-quoted strings; each prompt must mention **color, radius, typography, shadow/border** where relevant (Phase 4 gate).
 4. Add `### Iteration Guide` with **5–10** numbered items targeting mistakes agents make for this brand (tie to Part II question 24 if present).

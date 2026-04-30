@@ -21,7 +21,7 @@ Produce **light** and **dark** HTML catalogs beside `DESIGN.md` without overwrit
 
 ## Steps
 
-1. Open [template-DESIGN.md](template-DESIGN.md) **Phase 6 — Visual catalog** for context (Inter fallback, regenerate after token edits).
+1. Open [template-DESIGN.md](../../../docs/template-DESIGN.md) **Phase 6 — Visual catalog** for context (Inter fallback, regenerate after token edits).
 2. From this repository root (where `package.json` and `scripts/generate-design-previews.mjs` live), run:
    - `npm run generate-previews` **or**
    - `node scripts/generate-design-previews.mjs <path-to-DESIGN.md> [--out <dir>]`

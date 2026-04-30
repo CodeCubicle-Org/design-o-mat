@@ -1,0 +1,42 @@
+{
+  "$schemaVersion": "1.0.0",
+  "description": "Optional component-specific overrides. If this file is missing or incomplete, use defaults from design-previews/preview-config.json.",
+  "components": [
+    {
+      "name": "Button",
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "disabled"
+      ],
+      "variants": [
+        "primary",
+        "secondary",
+        "ghost"
+      ]
+    },
+    {
+      "name": "Input",
+      "states": [
+        "default",
+        "focus",
+        "error",
+        "disabled"
+      ],
+      "variants": [
+        "text"
+      ]
+    },
+    {
+      "name": "Card",
+      "states": [
+        "default"
+      ],
+      "variants": [
+        "base",
+        "elevated"
+      ]
+    }
+  ]
+}

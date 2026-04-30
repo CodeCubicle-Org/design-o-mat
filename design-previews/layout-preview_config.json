@@ -1,0 +1,38 @@
+{
+  "$schemaVersion": "1.0.0",
+  "description": "Optional layout-specific overrides. If this file is missing or incomplete, use defaults from design-previews/preview-config.json.",
+  "layouts": [
+    {
+      "id": "marketing-hero",
+      "label": "Marketing Hero",
+      "widgets": [
+        "TopNav",
+        "HeroHeadline",
+        "PrimaryCta",
+        "SecondaryCta",
+        "FeatureHighlights"
+      ]
+    },
+    {
+      "id": "pricing-section",
+      "label": "Pricing Section",
+      "widgets": [
+        "SectionTitle",
+        "PricingCards",
+        "ComparisonTable",
+        "FaqPreview"
+      ]
+    },
+    {
+      "id": "dashboard-overview",
+      "label": "Dashboard Overview",
+      "widgets": [
+        "SidebarNav",
+        "KpiCards",
+        "MainChart",
+        "ActivityFeed",
+        "DataTable"
+      ]
+    }
+  ]
+}

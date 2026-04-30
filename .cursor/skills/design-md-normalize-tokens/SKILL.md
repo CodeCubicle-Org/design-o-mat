@@ -21,7 +21,7 @@ Turn Phase 1 notes into **internally consistent** draft subsections **§2, §3, 
 
 ## Steps
 
-1. Open [template-DESIGN.md](template-DESIGN.md) **Phase 2 — Normalize tokens** (steps 2.1–2.4).
+1. Open [template-DESIGN.md](../../../docs/template-DESIGN.md) **Phase 2 — Normalize tokens** (steps 2.1–2.4).
 2. **§2:** Group colors with `###` headings; each bullet **Name (`value`): role**; add `var(--*)` when known.
 3. **§3:** Build **Hierarchy** markdown table (Role, Font, Size, Weight, Line Height, Letter Spacing, Notes); add **Font Family** and **Principles** subsections.
 4. **§5:** Spacing base + scale; grid/container; whitespace philosophy; border radius scale (or thin **Layout** list if mimicking minimal corpus files).

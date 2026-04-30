@@ -2,7 +2,7 @@
 
 *For the [design-o-mat](https://github.com/CodeCubicle-Org/design-o-mat) project.*
 
-Condensed from [awesome-design-md-corpus-analysis.md](../../../awesome-design-md-corpus-analysis.md) and [template-DESIGN.md](../../../template-DESIGN.md). Use with skill **design-md-stitch-format**.
+Condensed from [awesome-design-md-corpus-analysis.md](../../../awesome-design-md-corpus-analysis.md) and [template-DESIGN.md](../../../docs/template-DESIGN.md). Use with skill **design-md-stitch-format**.
 
 ## Official intent (Stitch themes + repo §9)
 

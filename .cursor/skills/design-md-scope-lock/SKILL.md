@@ -21,7 +21,7 @@ Produce a completed **gate** for authoring: product identity, URLs or design fil
 
 ## Steps
 
-1. Open the project [template-DESIGN.md](template-DESIGN.md) at **Part I — Data you need upfront** and **Part II** (sections A–H, especially **G. Sections 7–8 structure**).
+1. Open the project [template-DESIGN.md](../../../docs/template-DESIGN.md) at **Part I — Data you need upfront** and **Part II** (sections A–H, especially **G. Sections 7–8 structure**).
 2. Walk through **Phase 0 — Lock scope and sources** (steps 0.1–0.3): complete Part I table rows, Part II answers, and write the single canonical-source rule when web ≠ design file.
 3. Validate **Part II G cross-check**: chosen §7/§8 pairing must not match a forbidden row (e.g. Dark Mode §7 without Responsive §8).
 4. Output a short **summary block** for the user: filled U1, U3/U5, U11, §7 title choice, §8 title choice, canonical source rule, and any **unknowns** still open.

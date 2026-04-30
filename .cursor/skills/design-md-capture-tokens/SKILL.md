@@ -21,7 +21,7 @@ Gather **empirical** values from the product (not guessed) so later phases can f
 
 ## Steps
 
-1. Open [template-DESIGN.md](template-DESIGN.md) **Phase 1 — Capture reality (evidence)** and follow steps **1.1–1.6** (desktop + mobile screenshots, computed styles for body/H1/button/input/card states, `:root` / theme variables, Network-tab fonts, optional media-query count).
+1. Open [template-DESIGN.md](../../../docs/template-DESIGN.md) **Phase 1 — Capture reality (evidence)** and follow steps **1.1–1.6** (desktop + mobile screenshots, computed styles for body/H1/button/input/card states, `:root` / theme variables, Network-tab fonts, optional media-query count).
 2. Structure findings as: **Colors** (hex/rgba/oklab as seen), **Typography** (family, size, weight, line-height, letter-spacing per role sampled), **Spacing/radius/shadow** snippets, **CSS variable list** (name + sample value).
 3. Call out **gaps** (e.g. dark mode not inspected, missing error state) for the user to confirm.
 

@@ -1,0 +1,24 @@
+import type { Preview } from '@storybook/your-framework';
+
+// Map design-o-mat global defaults into Storybook globals.
+const preview: Preview = {
+  parameters: {
+    controls: {
+      expanded: true,
+      sort: 'requiredFirst'
+    },
+    layout: 'centered'
+  },
+  // Equivalent to global fallback values in preview-config.json.
+  args: {
+    state: 'default'
+  },
+  argTypes: {
+    state: {
+      control: 'select',
+      options: ['default', 'hover', 'focus', 'disabled']
+    }
+  }
+};
+
+export default preview;
